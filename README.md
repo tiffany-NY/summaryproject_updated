@@ -4,7 +4,7 @@
 
 - Tiffany
 - Member 2
-- Member 3
+- Janie Fu Huijia
 - Member 4
 
 # This is a J1 Summary Project
