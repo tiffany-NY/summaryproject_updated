@@ -1,10 +1,9 @@
 # 2025-summary-project
 
 ## Members
-
-- Member 1
+- Tiffany
 - Wang Jiayuan
-- Member 3
+- Janie Fu Huijia
 - Micole Koh En Xuen
 
 # This is a J1 Summary Project
