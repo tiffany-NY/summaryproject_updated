@@ -73,5 +73,3 @@ class Map:
         else:
             if self.xcoord > 0:
                 self.xcoord -= 1
-
-
