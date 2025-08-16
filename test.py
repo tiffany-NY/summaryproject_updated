@@ -21,8 +21,8 @@ while round:
     twilight.attack(enemy)
     enemy.attack(twilight)
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-    print(f"\t\thealth of {twilight.name}: {twilight.health}")
-    print(f"\t\thealth of {enemy.name}: {enemy.health}")
+    print(f"\t\thealth of {twilight.name}: {twilight.health} / {twilight.max_health}")
+    print(f"\t\thealth of {enemy.name}: {enemy.health} / {enemy.max_health}")
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
 
     if twilight.alive() and enemy.alive():

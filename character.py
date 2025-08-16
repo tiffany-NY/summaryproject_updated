@@ -1,4 +1,5 @@
 import items
+#use an update method to update stats after potion intake
 
 class Character:
     """e"""
