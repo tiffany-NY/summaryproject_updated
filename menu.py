@@ -1,5 +1,8 @@
 import os
-import character
+from character import Character, Higherup
+from items import weapon, potion
+import random
+import os
 
 run = True
 menu = True
@@ -73,7 +76,12 @@ while run:
     while play:
         save()
         print("intro stuff teehee")
-        destination = input("> where u wanna go: ").strip().lower()
+        #destination = input("> where u wanna go: ").strip().lower()
+        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+        print("start battle")
+        twilight = Higherup(name="Twilight", health=100, power=5, weapon=weapon, potion=potion)
+        enemy = Character(name="enemy", health=100, power=10)
+
 
         if destination == "menu":
             play = False

@@ -1,5 +1,4 @@
-import items
-#use an update method to update stats after potion intake
+from items import weapon, potion
 
 class Character:
     """e"""
@@ -38,23 +37,53 @@ class Character:
 
 class Higherup(Character):
     """u"""
-    def __init__(self, name: str, health: int, power: int, weapon):
+    def __init__(self, name: str, health: int, power: int, weapon, potion):
         super().__init__(name, health, power)
         self.weapon = weapon
+        self.potion = potion
 
     def attack(self, target):
         """ p """
-        damage = self.power + self.weapon.damage
-        target.health -= (self.power + self.weapon.damage)
-        target.health = max(target.health, 0)
-        print(f"{self.name} did {damage} damage to {target.name}")
-        if self.weapon.health != 0:
-            self.health += self.weapon.health
-            print(f"  #{self.weapon.name} caused {self.name} health to drop by {self.weapon.health}")
+        if self.weapon != None:
+            damage = self.power + self.weapon.damage
+            target.health -= (self.power + self.weapon.damage)
+            target.health = max(target.health, 0)
+            print(f"{self.name} did {damage} damage to {target.name}")
+            if self.weapon.health != 0:
+                self.health += self.weapon.health
+                print(f"  #{self.weapon.name} caused {self.name} health to drop by {self.weapon.health}")
+        else:
+            target.health -= self.power
+            target.health = max(target.health, 0)
+            print(f"{self.name} did {self.power} damage to {target.name}")
 
     def display_stats(self):
         """
         disply all the stats to the player
         """
-        print(f"|| {self.name} || Power: {self.power} | Equipped: {self.weapon.name} |")
-        self.weapon.display_weapon_stats()
+        if self.weapon != None:
+            print(f"|| {self.name} || Power: {self.power} | Equipped: {self.weapon.name} |")
+        else:
+            super().display_stats()
+
+    def use_potion(self, potion):
+        if self.potion.health[0] == "+":
+            self.health = min(self.health + int(self.potion.health[1:]), self.health_max)
+        elif self.potion.health[0] == "x":
+            self.health = min(self.health * int(self.potion.health[1:]), self.health_max)
+
+        if self.potion.max_health[0] == "+":
+            self.health_max += int(self.potion.max_health[1:])
+        elif self.potion.max_health[0] == "x":
+            self.health_max *= int(self.potion.max_health[1:])
+            
+        if self.potion.default_power[0] == "+":
+            self.power += int(self.potion.default_power[1:])
+        elif self.potion.default_power[0] == "x":
+            self.power *= int(self.potion.default_power[1:])
+
+    def pick_up(self, weapon, potion):
+        pass
+
+    def drop(self, weapon, potion):
+        pass
