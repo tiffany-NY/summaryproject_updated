@@ -2,7 +2,6 @@ import os
 from character import Character, Higherup
 from items import weapon, potion
 import random
-import os
 from test import battle, twilight, enemy
 
 run = True
@@ -15,11 +14,6 @@ name = ""
 
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
-
-def rounds():
-    battling = True
-    while battling:
-        battling = battle()
 
 def save():
     try:
@@ -47,6 +41,11 @@ def load():
 def start():
     print("intro stuff teehee")
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+
+def rounds():
+    battling = True
+    while battling:
+        battling = battle()
 
 while run:
     while menu:
