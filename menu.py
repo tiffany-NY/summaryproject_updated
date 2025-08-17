@@ -3,6 +3,7 @@ from character import Character, Higherup
 from items import weapon, potion
 import random
 import os
+from test import battle, twilight, enemy
 
 run = True
 menu = True
@@ -14,6 +15,11 @@ name = ""
 
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
+
+def rounds():
+    battling = True
+    while battling:
+        battling = battle()
 
 def save():
     try:
@@ -37,6 +43,10 @@ def load():
     except Exception as e:
         print(f"Error loading game: {e}")
         return False
+
+def start():
+    print("intro stuff teehee")
+    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
 
 while run:
     while menu:
@@ -75,14 +85,25 @@ while run:
 
     while play:
         save()
-        print("intro stuff teehee")
-        #destination = input("> where u wanna go: ").strip().lower()
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-        print("start battle")
-        twilight = Higherup(name="Twilight", health=100, power=5, weapon=weapon, potion=potion)
-        enemy = Character(name="enemy", health=100, power=10)
+        start()
 
-
+        destination = input("> where u wanna go: ").strip().lower()
         if destination == "menu":
             play = False
             menu = True
+        else:
+            clear()
+            print("imagine ur in a kitchen ahh .. things appear ahhhh")
+            input("> press enter to start your battle ")
+            rounds()
+            if twilight.alive():
+                print("you can continue to move around the map!!!!!!!!!!!!")
+                destination = input("> where u wanna go: ").strip().lower()
+                if destination == "menu":
+                    play = False
+                    menu = True
+                else:
+                    rounds()
+            else:
+                print("game over loser")
+                quit()

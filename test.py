@@ -9,28 +9,32 @@ def clear():
 twilight = Higherup(name="Twilight", health=100, power=5, weapon=weapon, potion=None)
 enemy = Character(name="enemy", health=100, power=10)
 
-def round():
-    active = True
-    while active:
-        clear()
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-        twilight.display_stats()
-        enemy.display_stats()
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-        twilight.attack(enemy)
-        enemy.attack(twilight)
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-        print(f"\t\thealth of {twilight.name}: {twilight.health} / {twilight.health_max}")
-        print(f"\t\thealth of {enemy.name}: {enemy.health} / {enemy.health_max}")
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+def battle():
+    clear()
+    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    twilight.display_stats()
+    enemy.display_stats()
+    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    twilight.attack(enemy)
+    enemy.attack(twilight)
+    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(f"\t\thealth of {twilight.name}: {twilight.health} / {twilight.health_max}")
+    print(f"\t\thealth of {enemy.name}: {enemy.health} / {enemy.health_max}")
+    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
 
-        if twilight.alive() and enemy.alive():
-            input("attack ah?")
+    if twilight.alive() and enemy.alive():
+        input("attack ah?")
+        return True
+    else:
+        if twilight.alive():
+            clear()
+            print("yipee u won !!!")
+        
         else:
-            if twilight.alive():
-                print("yipee u won")
-            else:
-                print("oh u died")
-            active = False
+            clear()
+            print("oh u died")
+        return False
 
-round()
+# battling = True
+# while battling:
+#     battling = battle()

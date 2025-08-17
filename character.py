@@ -32,7 +32,7 @@ class Character:
         """
         disply all the stats to the player
         """
-        print(f"|| {self.name} || Power: {self.power}")
+        print(f"|| {self.name} || Power: {self.power} |")
 
 
 class Higherup(Character):
@@ -63,6 +63,7 @@ class Higherup(Character):
         """
         if self.weapon != None:
             print(f"|| {self.name} || Power: {self.power} | Equipped: {self.weapon.name} |")
+            self.weapon.display_weapon_stats()
         else:
             super().display_stats()
 
