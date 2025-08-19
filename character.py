@@ -33,10 +33,10 @@ class Character:
 
 
 class Higherup(Character):
-    def __init__(self, name: str, health: int, power: int, weapon, potion):
+    def __init__(self, name: str, health: int, power: int):
         super().__init__(name, health, power)
-        self.weapon = weapon
-        self.potion = potion
+        self.weapon = None
+        self.potion = None
         self.own_inventory = Inventory()
 
     def attack(self, target):

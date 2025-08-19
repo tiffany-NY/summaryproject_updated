@@ -1,43 +1,36 @@
+        #x = 0    #x = 1   #x = 2
+map = [['room1', 'room2', 'room3'], #y = 0
+        ['room4','room5', 'room6'],  #y = 1
+        ['room7', 'room8', 'room9'], #y = 2
+        ['room10', 'room11', 'room12'], #y = 3
+        ['room13', 'room14', 'room15']] #y = 4
+
 class Map:
 
-    def __init__(self, size: int, xcoord: int, ycoord: int, location: str) -> None:
-        self.size = size #size of map
+    def __init__(self, map, xcoord: int, ycoord: int) -> None:
+        self.map = map
         self.xcoord = xcoord #xcoord of coordinates of player
         self.ycoord = ycoord #ycoord of cordinates of player
-        self.current_location = location #room the player is in
+        self.current_location = map[self.ycoord][self.xcoord] #room the player is in
 
+ 
     def show_current_location(self) -> str:
         """
         Displays the name of the room Twilight is currently in
         """
-        print(f'Your current location is {self.current_location}.')
-
-    def set_current_location(self, location: str) -> None:
-        """ 
-        Updates the location Twilight to the room shes is currently in
-        """
-        self.current_location = location
-        return self.current_location
+        print(f'Your current location is {self.current_location}')
 
     def display_map(self) -> str:
         """
         Displays the map
         """
-            #x = 0    #x = 1
-        map = [['room1', 'room2'], #y = 0
-            ['room3','room4']] #y = 1
-
-        print(map)
+        for row in self.map:
+            print(row)
 
     def move_location(self) -> None:
         """
         Updates the coordiates of the player 
         """
-        #grid of map
-                #x = 0    #x = 1
-        map = [['room1', 'room2'], #y = 0
-               ['room3','room4']] #y = 1
-
         #control for movement
         if self.ycoord > 0:
             print('1 - North') #up
@@ -51,25 +44,29 @@ class Map:
         if self.xcoord > 0 :
             print('4 - West') #left
 
-        #promps user for number representing the movements
-        movement = input('Input a number for your next move: ')
+        movement = input('> girl where u wanna go faster pick can anot: ')
 
         #up
-        if movement == 1:
+        if movement == "1":
             if self.ycoord > 0:
-                self.ycoord += 1
-
-        #down
-        elif movement == 2:
-            if self.ycoord < len(map) - 1:
                 self.ycoord -= 1
-
+        #down
+        elif movement == "2":
+            if self.ycoord < len(map) - 1:
+                self.ycoord += 1
         #right
-        elif movement == 3:
+        elif movement == "3":
             if self.xcoord < len(map[0]) - 1:
                 self.xcoord += 1
-        
         #left
         else:
             if self.xcoord > 0:
                 self.xcoord -= 1
+
+        self.current_location = map[self.ycoord][self.xcoord]
+
+hehe = Map(map, 0, 0)
+hehe.display_map()
+
+hehe.move_location()
+hehe.show_current_location()
