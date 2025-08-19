@@ -1,8 +1,7 @@
-from items import weapon, potion
+from items import Weapon, Potion, weapon, potion
+from inventory import Inventory
 
 class Character:
-    """e"""
-
     def __init__(self, name: str, health: int, power: int):
         self.name = name
         self.health = health
@@ -10,40 +9,39 @@ class Character:
         self.power = power
 
     def alive(self):
-        """ e"""
+        """Returns True if character is alive"""
         return self.health > 0
 
     def attack(self, target):
-        """ p """
-        if target.weapon.name == "wobuffet wall" and target.weapon.use < 2:
-            print(f"{self.name} attack got blocked by {target.weapon.name}")
-            target.weapon.wobuffet_use()
-        else:
-            if target.weapon.name == "wobuffet wall" and target.weapon.use >= 2:
-                print("  #wobuffet wall has been completely used")
-            target.health -= self.power
-            target.health = max(target.health, 0)
-            print(f"{self.name} did {self.power} damage to {target.name}")
+        """Reduces target health when attacking unless target uses a shield and shield is only valid for 2 times use"""
+        if target.weapon:
+            if target.weapon.name == "wobuffet wall" and target.weapon.use < 2:
+                print(f"{self.name} attack got blocked by {target.weapon.name}")
+                target.weapon.wobuffet_use()
+            else:
+                if target.weapon.name == "wobuffet wall" and target.weapon.use >= 2:
+                    print("  #wobuffet wall has been completely used")
+        target.health -= self.power
+        target.health = max(target.health, 0)
+        print(f"{self.name} did {self.power} damage to {target.name}")
 
-    #def display_health(self):
-        #pass #health bar hehe
+    def display_health(self):
+        pass 
     
     def display_stats(self):
-        """
-        disply all the stats to the player
-        """
+        """Disply all of character stats """
         print(f"|| {self.name} || Power: {self.power} |")
 
 
 class Higherup(Character):
-    """u"""
-    def __init__(self, name: str, health: int, power: int, weapon, potion):
+    def __init__(self, name: str, health: int, power: int):
         super().__init__(name, health, power)
-        self.weapon = weapon
-        self.potion = potion
+        self.weapon = None
+        self.potion = None
+        self.own_inventory = Inventory()
 
     def attack(self, target):
-        """ p """
+        """Reduces target health when attacking, total damage is default power and weapon if equipped"""
         if self.weapon != None:
             damage = self.power + self.weapon.damage
             target.health -= (self.power + self.weapon.damage)
@@ -58,9 +56,7 @@ class Higherup(Character):
             print(f"{self.name} did {self.power} damage to {target.name}")
 
     def display_stats(self):
-        """
-        disply all the stats to the player
-        """
+        """ disply all of character stats, including weapon if equipped """
         if self.weapon != None:
             print(f"|| {self.name} || Power: {self.power} | Equipped: {self.weapon.name} |")
             self.weapon.display_weapon_stats()
@@ -68,6 +64,7 @@ class Higherup(Character):
             super().display_stats()
 
     def use_potion(self, potion):
+        """Changes the corressponding stats according to potion description"""
         if self.potion.health[0] == "+":
             self.health = min(self.health + int(self.potion.health[1:]), self.health_max)
         elif self.potion.health[0] == "x":
@@ -83,8 +80,22 @@ class Higherup(Character):
         elif self.potion.default_power[0] == "x":
             self.power *= int(self.potion.default_power[1:])
 
-    def pick_up(self, weapon, potion):
-        pass
+    def using_item(self, item):
+        """uses item"""
+        holder = self.own_inventory.use_item(item)
+        if isinstance(holder, Weapon):
+            self.weapon = holder
+        if isinstance(holder, Potion):
+            self.potion = holder
+            self.use_potion(holder)
+        
+    def pick_up(self, item):
+        """Adds item into inventory"""
+        self.own_inventory.add_item(item)
 
-    def drop(self, weapon, potion):
-        pass
+    def drop(self, item):
+        """Drops item from inventory"""
+        self.own_inventory.drop_item(item)
+
+    def display_inventory(self):
+        self.own_inventory.show_inventory()

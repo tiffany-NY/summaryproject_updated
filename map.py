@@ -1,9 +1,17 @@
+        #x = 0    #x = 1   #x = 2
+map = [['room1', 'room2', 'room3'], #y = 0
+        ['room4','room5', 'room6'],  #y = 1
+        ['room7', 'room8', 'room9'], #y = 2
+        ['room10', 'room11', 'room12'], #y = 3
+        ['room13', 'room14', 'room15']] #y = 4
+
 class Map:
 
-    def __init__(self, xcoord: int, ycoord: int, location: str) -> None:
+    def __init__(self, map, xcoord: int, ycoord: int) -> None:
+        self.map = map
         self.xcoord = xcoord #xcoord of coordinates of player
         self.ycoord = ycoord #ycoord of cordinates of player
-        self.current_location = location #room the player is in
+        self.current_location = map[self.ycoord][self.xcoord] #room the player is in
 
     def show_current_location(self) -> str:
         """
@@ -11,31 +19,17 @@ class Map:
         """
         print(f'Your current location is {self.current_location}.')
 
-    def set_current_location(self, location: str) -> None:
-        """ 
-        Updates the location Twilight to the room shes is currently in
-        """
-        self.current_location = location
-        return self.current_location
-
     def display_map(self) -> str:
         """
         Displays the map
         """
-            #x = 0    #x = 1
-        map = [['room1', 'room2'], #y = 0
-            ['room3','room4']] #y = 1
-
-        print(map)
+        for row in self.map:
+            print(row)
 
     def move_location(self) -> None:
         """
         Updates the coordiates of the player 
         """
-        #grid of map
-                #x = 0    #x = 1
-        map = [['room1', 'room2'], #y = 0
-               ['room3','room4']] #y = 1
 
         #control for movement
         if self.ycoord > 0:
@@ -78,18 +72,3 @@ class Map:
 
         self.current_location = map[self.ycoord][self.xcoord]    
 
-hehe = Map(0, 0, 'room1')
-hehe.show_current_location()
-hehe.move_location()
-
-hehe.show_current_location()
-hehe.move_location()
-
-hehe.show_current_location()
-hehe.move_location()
-
-hehe.show_current_location()
-hehe.move_location()
-
-hehe.show_current_location()
-hehe.move_location()
