@@ -50,12 +50,12 @@ class Map:
         #up
         if movement == 1:
             if self.ycoord > 0:
-                self.ycoord += 1
+                self.ycoord -= 1
 
         #down
         elif movement == 2:
             if self.ycoord < len(map) - 1:
-                self.ycoord -= 1
+                self.ycoord += 1
 
         #right
         elif movement == 3:

@@ -1,5 +1,5 @@
 rules = 
-" 
+"""
 Awaken, O wanderer, to the words etched in the stones of time.
 When the world of Equestria lies fractured, and harmony is but a fading memory, the shadow of Nightmare Moon shall descend upon all. 
 Once she was Princess Luna, guardian of dreams,but envy and sorrow twisted her into darkness unending.
@@ -15,4 +15,4 @@ But as the moon wanes and waxes, so too may destiny grant you another chance.
 Victory shall be yours only when the Elements of Harmony are united, and the terrible Nightmare is cast down. 
 Then shall Princess Luna return, and Equestria be made whole once more.
 So it is written. So it awaits.Step forth, brave warrior for the Castle of the Two opens only to those who dare to claim their fate.
-"
+"""
