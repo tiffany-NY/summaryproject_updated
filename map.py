@@ -13,12 +13,11 @@ class Map:
         self.ycoord = ycoord #ycoord of cordinates of player
         self.current_location = map[self.ycoord][self.xcoord] #room the player is in
 
- 
     def show_current_location(self) -> str:
         """
         Displays the name of the room Twilight is currently in
         """
-        print(f'Your current location is {self.current_location}')
+        print(f'Your current location is {self.current_location}.')
 
     def display_map(self) -> str:
         """
@@ -31,6 +30,7 @@ class Map:
         """
         Updates the coordiates of the player 
         """
+
         #control for movement
         if self.ycoord > 0:
             print('1 - North') #up
@@ -44,29 +44,31 @@ class Map:
         if self.xcoord > 0 :
             print('4 - West') #left
 
-        movement = input('> girl where u wanna go faster pick can anot: ')
+        #promps user for number representing the movements
+        movement = int(input('Input a number for your next move: '))
 
         #up
-        if movement == "1":
+        if movement == 1:
             if self.ycoord > 0:
-                self.ycoord -= 1
-        #down
-        elif movement == "2":
-            if self.ycoord < len(map) - 1:
                 self.ycoord += 1
+
+        #down
+        elif movement == 2:
+            if self.ycoord < len(map) - 1:
+                self.ycoord -= 1
+
         #right
-        elif movement == "3":
+        elif movement == 3:
             if self.xcoord < len(map[0]) - 1:
                 self.xcoord += 1
+        
         #left
-        else:
+        elif movement == 4:
             if self.xcoord > 0:
                 self.xcoord -= 1
+        
+        else:
+            self.move_location()
 
-        self.current_location = map[self.ycoord][self.xcoord]
+        self.current_location = map[self.ycoord][self.xcoord]    
 
-hehe = Map(map, 0, 0)
-hehe.display_map()
-
-hehe.move_location()
-hehe.show_current_location()
