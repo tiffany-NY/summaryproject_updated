@@ -6,21 +6,21 @@ import os
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
-twilight = Higherup(name="Twilight", health=100, power=5, weapon=weapon, potion=None)
+twilight = Higherup(name="Twilight", health=100, power=5)
 enemy = Character(name="enemy", health=100, power=10)
 
-# twilight.display_stats()
-# print(potion.name, weapon.name)
-# heh = input("> do u wanna pick up the weapon? ")
-# if heh == "yes":
-#     twilight.pick_up(weapon)
-#     twilight.pick_up(potion)
-#     twilight.display_inventory()
-# print("----------")
-# twilight.using_item(potion)
-# twilight.display_stats()
-# twilight.display_inventory()
-
+def before_battle():
+    twilight.display_stats()
+    print(potion.name, weapon.name)
+    heh = input("> do u wanna pick up the weapon and potion? ")
+    if heh == "yes":
+        twilight.pick_up(weapon)
+        twilight.pick_up(potion)
+        twilight.display_inventory()
+    print("----------")
+    twilight.using_item(weapon)
+    twilight.display_stats()
+    twilight.display_inventory()
 
 
 def battle():
