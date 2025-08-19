@@ -14,15 +14,16 @@ class Character:
 
     def attack(self, target):
         """Reduces target health when attacking unless target uses a shield and shield is only valid for 2 times use"""
-        if target.weapon.name == "wobuffet wall" and target.weapon.use < 2:
-            print(f"{self.name} attack got blocked by {target.weapon.name}")
-            target.weapon.wobuffet_use()
-        else:
-            if target.weapon.name == "wobuffet wall" and target.weapon.use >= 2:
-                print("  #wobuffet wall has been completely used")
-            target.health -= self.power
-            target.health = max(target.health, 0)
-            print(f"{self.name} did {self.power} damage to {target.name}")
+        if target.weapon:
+            if target.weapon.name == "wobuffet wall" and target.weapon.use < 2:
+                print(f"{self.name} attack got blocked by {target.weapon.name}")
+                target.weapon.wobuffet_use()
+            else:
+                if target.weapon.name == "wobuffet wall" and target.weapon.use >= 2:
+                    print("  #wobuffet wall has been completely used")
+        target.health -= self.power
+        target.health = max(target.health, 0)
+        print(f"{self.name} did {self.power} damage to {target.name}")
 
     def display_health(self):
         pass 
