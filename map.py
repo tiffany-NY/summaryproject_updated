@@ -1,7 +1,6 @@
 class Map:
 
-    def __init__(self, size: int, xcoord: int, ycoord: int, location: str) -> None:
-        self.size = size #size of map
+    def __init__(self, xcoord: int, ycoord: int, location: str) -> None:
         self.xcoord = xcoord #xcoord of coordinates of player
         self.ycoord = ycoord #ycoord of cordinates of player
         self.current_location = location #room the player is in
@@ -52,7 +51,7 @@ class Map:
             print('4 - West') #left
 
         #promps user for number representing the movements
-        movement = input('Input a number for your next move: ')
+        movement = int(input('Input a number for your next move: '))
 
         #up
         if movement == 1:
@@ -70,6 +69,27 @@ class Map:
                 self.xcoord += 1
         
         #left
-        else:
+        elif movement == 4:
             if self.xcoord > 0:
                 self.xcoord -= 1
+        
+        else:
+            self.move_location()
+
+        self.current_location = map[self.ycoord][self.xcoord]    
+
+hehe = Map(0, 0, 'room1')
+hehe.show_current_location()
+hehe.move_location()
+
+hehe.show_current_location()
+hehe.move_location()
+
+hehe.show_current_location()
+hehe.move_location()
+
+hehe.show_current_location()
+hehe.move_location()
+
+hehe.show_current_location()
+hehe.move_location()
