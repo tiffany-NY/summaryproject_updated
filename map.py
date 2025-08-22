@@ -1,10 +1,88 @@
         #x = 0    #x = 1   #x = 2
-map = [['room1', 'room2', 'room3'], #y = 0
-        ['room4','room5', 'room6'],  #y = 1
-        ['room7', 'room8', 'room9'], #y = 2
-        ['room10', 'room11', 'room12'], #y = 3
-        ['room13', 'room14', 'room15']] #y = 4
+map = [['Hallway', 'Garden', 'Drawing Room'], #y = 0
+        ['Kitchen','Tea Room', 'Study'],  #y = 1
+        ['Throne Room', 'Chambers', 'Artillery'], #y = 2
+        ['Dungeon', 'Crown Room', 'Ballroom'], #y = 3
+        ['Stables', 'Gallery', 'Library']] #y = 4
 
+details = {
+    'Hallway': {
+        'name': 'Hallway',
+        'enemy': ['doofus1', 100, 5],
+        'weapon': ['sword', 10, 0]
+    },
+    'Garden': {
+        'name': 'Garden',
+        'enemy': ['doofus2', 100, 7],
+        'weapon': ['kaboom spell', 10, -5]
+    },
+    'Drawing Room': {
+        'name': 'Drawing Room',
+        'enemy': ['doofus3', 100, 7],
+        'potion': ['Mrs scowers all purpose maggi mee', 'x2', '0', '0', 50]
+    },
+    'Kitchen': {
+        'name': 'Kitchen',
+        'enemy': ['doofus4', 100, 10],
+        'potion': ['Wiggenweld juice', '+10', '0', '0', '50']
+    },
+    'Tea Room': {
+        'name': 'Tea Room',
+        'enemy': ['doofus5', 100, 10],
+        'weapon': ['Pinkie spell', 20, -5]
+    },
+    'Study': {
+        'name': 'Kitchen',
+        'enemy': ['doofus6', 100, 13],
+        'potion': ['Alicorn Elixer', '+20', '+10', '+10', '10']
+    },
+    'Throne Room': {
+        'name': 'Throne Room',
+        'enemy': ['Nightmare Moon', 250, 30]
+    },
+    'Chambers': {
+        'name': 'Chambers',
+        'enemy': ['doofus7', 100, 15],
+        'weapon': ['Wobuffet Wall', 0, 0]
+    },
+    'Artillery': {
+        'name': 'Artillery',
+        'enemy': ['doofus8', 100, 15],
+        'potion': ['Boosting Salve', '0', 'x2', '0', 30]
+    },
+    'Dungeon': {
+        'name': 'Dungeon',
+        'enemy': ['doofus9', 100, 18],
+        'potion': ['Gigantamax Power', '0', '0', 'x2', 20]
+    },
+    'Crown Room': {
+        'name': 'Crowd Room',
+        'enemy': ['doofus10', 100, 12],
+        'weapon': ['kaboom spell', 10, -5]
+    },
+    'Ballroom': {
+        'name': 'Ballroom',
+        'enemy': ['doofus11', 100, 14],
+        'potion': ['Mrs scowers all purpose maggi mee', 'x2', '0', '0', 50]
+    },
+    'Stables': {
+        'name': 'Stables',
+        'enemy': ['doofus12', 100, 8],
+        'weapon': ['Pinkie Spell', 20, -5]
+    },
+    'Gallery': {
+        'name': 'Gallery',
+        'enemy': ['doofus13', 100, 15],
+        'potion': ['Kaboom Spell', 10, -5]
+    },
+    'Library': {
+        'name': 'Library',
+        'enemy': ['doofus14', 100, 8],
+        'potion': ['Gigantamax Power', '0', '0', 'x2', 20]
+    }
+}
+
+        
 class Map:
 
     def __init__(self, map, xcoord: int, ycoord: int) -> None:
