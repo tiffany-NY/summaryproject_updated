@@ -10,14 +10,13 @@ One who will brave monsters, traps, and secrets untold.
 
 Know this, chosen one: Only by uniting the six Elements of Harmony—Loyalty, Honesty, Generosity, Kindness, Laughter, and Magic—shall Nightmare Moon be cast down,and Princess Luna restored to her true self.
 Should you falter, the Elements shall fall from your grasp, and if Nightmare Moon seizes them all, eternal night shall claim Equestria.
-"""
+"
 
 rules = 
 """
 Your path begins in the vast castle, within lies the Garden, Kitchen, Tea Room, Drawing Room, Study, Chambers, Artillery, Crown Room, and Dungeon.
 At the end, the Throne Room, where Nightmare Moon herself awaits.
 Each chamber holds secrets and dangers so tread carefully, for every step binds your destiny.
-
 
 In the castle rooms dwell mind-controlled ponies who have fallen prey to Nightmare Moon phonies. 
 Each battle flows in turns, as in the old duels of balance: you strike back and forth until one falls.
@@ -26,10 +25,11 @@ Your choices in combat are these:
 * Shield against oncoming blows.
 * Conjure Spells of great power, though some drain your life.
 * Use Relics such as potions or healing elixirs.
-* Flee, should the foe be deemed indomitable. 
 Remember: every choice carves the story of your soul.
+"""
 
-
+Item info = 
+"""
 Potions & Elixirs
 * Mrs Scower’s All-Purpose Maggi Mee More: Restores ×2 health.
 * Wiggenweld Elixir: +10 health.
@@ -52,4 +52,4 @@ Yet as the moon wanes and waxes,so too may destiny grant you another chance.
 So it is written. So it awaits.
 Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
 
-"""
+"
