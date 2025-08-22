@@ -58,8 +58,6 @@ class Potion:
         else:
             print(f"{self.name} --> {self.default_power} default power")
 
-#find a way to use chances in shop such that out of 5 only 3 appear and by random luck
-
 p_index = random.randint(0, len(potion_list)-1)
 p_chosen = potion_list[p_index]
 potion = Potion(p_chosen["name"], p_chosen["health"], p_chosen["max_health"], p_chosen["default_power"])

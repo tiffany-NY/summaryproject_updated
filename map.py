@@ -6,7 +6,6 @@ map = [['room1', 'room2', 'room3'], #y = 0
         ['room13', 'room14', 'room15']] #y = 4
 
 class Map:
-
     def __init__(self, map, xcoord: int, ycoord: int) -> None:
         self.map = map
         self.xcoord = xcoord #xcoord of coordinates of player
@@ -17,14 +16,13 @@ class Map:
         """
         Displays the name of the room Twilight is currently in
         """
-        print(f'Your current location is {self.current_location}.')
+        return f'Your current location is {self.current_location}.'
 
     def display_map(self) -> str:
         """
         Displays the map
         """
-        for row in self.map:
-            print(row)
+        return self.map
 
     def move_location(self) -> None:
         """
@@ -50,12 +48,12 @@ class Map:
         #up
         if movement == 1:
             if self.ycoord > 0:
-                self.ycoord += 1
+                self.ycoord -= 1
 
         #down
         elif movement == 2:
             if self.ycoord < len(map) - 1:
-                self.ycoord -= 1
+                self.ycoord += 1
 
         #right
         elif movement == 3:
