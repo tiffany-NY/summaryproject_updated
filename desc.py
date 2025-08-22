@@ -1,5 +1,5 @@
 backstory = 
-" 
+"""
 Awaken, O wanderer, to the words etched in the stones of time.
 When the world of Equestria lies fractured, and harmony is but a fading memory, the shadow of Nightmare Moon shall descend upon all.
 Once she was Princess Luna, guardian of dreams, but envy and sorrow twisted her into darkness unending.
@@ -10,10 +10,10 @@ One who will brave monsters, traps, and secrets untold.
 
 Know this, chosen one: Only by uniting the six Elements of Harmony—Loyalty, Honesty, Generosity, Kindness, Laughter, and Magic—shall Nightmare Moon be cast down,and Princess Luna restored to her true self.
 Should you falter, the Elements shall fall from your grasp, and if Nightmare Moon seizes them all, eternal night shall claim Equestria.
-"
+"""
 
 rules = 
-"
+"""
 Your path begins in the vast castle, within lies the Garden, Kitchen, Tea Room, Drawing Room, Study, Chambers, Artillery, Crown Room, and Dungeon.
 At the end, the Throne Room, where Nightmare Moon herself awaits.
 Each chamber holds secrets and dangers so tread carefully, for every step binds your destiny.
@@ -52,4 +52,4 @@ Yet as the moon wanes and waxes,so too may destiny grant you another chance.
 So it is written. So it awaits.
 Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
 
-"
+"""
