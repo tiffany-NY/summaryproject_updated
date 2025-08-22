@@ -1,9 +1,9 @@
         #x = 0    #x = 1   #x = 2
-map = [['room1', 'room2', 'room3'], #y = 0
-        ['room4','room5', 'room6'],  #y = 1
-        ['room7', 'room8', 'room9'], #y = 2
-        ['room10', 'room11', 'room12'], #y = 3
-        ['room13', 'room14', 'room15']] #y = 4
+map = [['hallway', 'kitchen', 'garden'], #y = 0
+        ['study room','tea room', 'drawing room'],  #y = 1
+        ['study room', 'a', 'artillery'], #y = 2
+        ['b', 'c', 'd'], #y = 3
+        ['chambers', 'crown room', 'throne room']] #y = 4
 
 class Map:
 
@@ -72,3 +72,4 @@ class Map:
 
         self.current_location = map[self.ycoord][self.xcoord]    
 
+castle = Map(map, 0, 0)
