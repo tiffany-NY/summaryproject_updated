@@ -1,12 +1,14 @@
 from items import Weapon, Potion, weapon, potion
 from inventory import Inventory
+from health_bar import HealthBar
 
 class Character:
-    def __init__(self, name: str, health: int, power: int):
+    def __init__(self, name: str, health: int, power: int, color):
         self.name = name
         self.health = health
         self.health_max = health
         self.power = power
+        self.health_bar = HealthBar(self, color=color)
 
     def alive(self):
         """Returns True if character is alive"""
@@ -21,12 +23,14 @@ class Character:
             else:
                 if target.weapon.name == "wobuffet wall" and target.weapon.use >= 2:
                     print("  #wobuffet wall has been completely used")
+ 
         target.health -= self.power
         target.health = max(target.health, 0)
+        target.health_bar.update()
         print(f"{self.name} did {self.power} damage to {target.name}")
 
     def display_health(self):
-        pass 
+        pass
     
     def display_stats(self):
         """Disply all of character stats """
@@ -34,8 +38,8 @@ class Character:
 
 
 class Higherup(Character):
-    def __init__(self, name: str, health: int, power: int):
-        super().__init__(name, health, power)
+    def __init__(self, name: str, health: int, power: int, color):
+        super().__init__(name, health, power, color)
         self.weapon = None
         self.potion = None
         self.own_inventory = Inventory()
@@ -46,6 +50,7 @@ class Higherup(Character):
             damage = self.power + self.weapon.damage
             target.health -= (self.power + self.weapon.damage)
             target.health = max(target.health, 0)
+            target.health_bar.update()
             print(f"{self.name} did {damage} damage to {target.name}")
             if self.weapon.health != 0:
                 self.health += self.weapon.health
@@ -53,6 +58,7 @@ class Higherup(Character):
         else:
             target.health -= self.power
             target.health = max(target.health, 0)
+            target.health_bar.update()
             print(f"{self.name} did {self.power} damage to {target.name}")
 
     def display_stats(self):
