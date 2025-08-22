@@ -70,5 +70,4 @@ class Map:
         else:
             self.move_location()
 
-        self.current_location = map[self.ycoord][self.xcoord]    
-
+        self.current_location = map[self.ycoord][self.xcoord]
