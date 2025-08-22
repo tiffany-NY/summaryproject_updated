@@ -10,7 +10,7 @@ One who will brave monsters, traps, and secrets untold.
 
 Know this, chosen one: Only by uniting the six Elements of Harmony—Loyalty, Honesty, Generosity, Kindness, Laughter, and Magic—shall Nightmare Moon be cast down,and Princess Luna restored to her true self.
 Should you falter, the Elements shall fall from your grasp, and if Nightmare Moon seizes them all, eternal night shall claim Equestria.
-"
+"""
 
 rules = 
 """
@@ -51,5 +51,4 @@ Yet as the moon wanes and waxes,so too may destiny grant you another chance.
 
 So it is written. So it awaits.
 Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
-
-"
+"""
