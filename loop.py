@@ -2,10 +2,10 @@ import os
 from character import Character, Higherup
 from items import weapon, potion
 import random
-from battle_stuff import battle, twilight, enemy, before_battle
+from battle_stuff import battle, twilight, enemy, before_battle, continueing, rounds
 from desc import backstory, rules, item_info
 from map import castle
-from menu import clear, load, save, start, menu, rounds, continueing
+from menu import clear, load, save, start, menu
 
 run = True
 
@@ -14,11 +14,11 @@ power = 5
 name = ""
 
 while run:
+    start()
     play = menu()
 
     while play:
         save()
-        start()
         input("> click enter to move on ")
         clear()
 

@@ -2,7 +2,6 @@ import os
 from character import Character, Higherup
 from items import weapon, potion
 import random
-from battle_stuff import battle, twilight, enemy, before_battle
 from desc import backstory, rules, item_info
 
 HP = 100
@@ -36,18 +35,16 @@ def load():
         return False
 
 def start():
-    print("Castle of the Two Sisters")
+    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print("\t𐙚⋆˚✿˖° Castle of the Two Sisters 𐙚⋆˚✿˖°")
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     print(backstory)
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    input("> click enter to move on ")
 
-def rounds():
-    battling = True
-    while battling:
-        battling = battle()
 
 def menu():
-    flag =  True
+    flag = True
     while flag:
         clear()
         print("1: New Game")
@@ -80,16 +77,3 @@ def menu():
 
         elif choice == "4":
             quit()
-
-def continueing():
-    if twilight.alive():
-            print("you can continue to move around the map!!!!!!!!!!!!")
-            castle.move_location()
-            destination = input("> where u wanna go: ").strip().lower()
-            if destination == "menu":
-                menu()
-            else:
-                pass
-    else:
-        print("game over loser")
-        quit() 
