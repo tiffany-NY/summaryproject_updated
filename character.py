@@ -94,6 +94,12 @@ class Higherup(Character):
         if isinstance(holder, Potion):
             self.potion = holder
             self.use_potion(holder)
+
+    def putting_back(self, item):
+        """ unequiping item and putting it back in inventory"""
+        if isinstance(holder, Weapon):
+            self.weapon = None
+        self.own_inventory.add_item(item)
         
     def pick_up(self, item):
         """Adds item into inventory"""
