@@ -2,6 +2,7 @@ from character import Character, Higherup
 from items import Weapon, weapon, potion, Potion
 import random
 import os
+from map import castle
 
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
@@ -23,6 +24,10 @@ def before_battle():
     twilight.display_stats()
     twilight.display_inventory()
 
+def rounds():
+    battling = True
+    while battling:
+        battling = battle()
 
 def battle():
     clear()
@@ -50,3 +55,12 @@ def battle():
             clear()
             print("oh u died")
         return False
+
+def continueing():
+    if twilight.alive():
+            print("you can continue to move around the map!!!!!!!!!!!!")
+            castle.move_location()
+            castle.show_current_location()
+    else:
+        print("game over loser")
+        quit() 

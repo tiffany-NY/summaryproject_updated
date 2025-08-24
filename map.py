@@ -1,3 +1,4 @@
+from menu import menu
         #x = 0    #x = 1   #x = 2
 map = [['Hallway', 'Garden', 'Drawing Room'], #y = 0
         ['Kitchen','Tea Room', 'Study'],  #y = 1
@@ -122,6 +123,8 @@ class Map:
         if self.xcoord > 0 :
             print('4 - West') #left
 
+        print('5 - Menu')
+
         #promps user for number representing the movements
         movement = int(input('Input a number for your next move: '))
 
@@ -145,7 +148,12 @@ class Map:
             if self.xcoord > 0:
                 self.xcoord -= 1
         
+        elif movement == 5:
+            menu()
+
         else:
             self.move_location()
+            
+        self.current_location = map[self.ycoord][self.xcoord] 
 
-        self.current_location = map[self.ycoord][self.xcoord]
+castle = Map(map, 0, 0)
