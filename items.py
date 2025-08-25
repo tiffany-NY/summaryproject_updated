@@ -22,15 +22,11 @@ class Weapon:
         disply all the stats of the weapons
         """
         if self.name == "wobuffet wall":
-            print(f"\t\t\t| {weapon.name} --> Blocks enemy attacks(x2)") 
+            print(f"{self.name} --> Blocks enemy attacks(x2)") 
         elif self.health == 0:
-            print(f"\t\t\t| {weapon.name} --> Damage: + {self.damage} |") 
+            print(f"{self.name} --> Damage: + {self.damage} |") 
         else:
-            print(f"\t\t\t| {weapon.name} --> Damage: + {self.damage} | Health: {self.health} |") 
-
-index = random.randint(0, len(weapon_list)-1)
-chosen = weapon_list[index]
-weapon = Weapon(chosen["name"], chosen["damage"], chosen["health"])
+            print(f"{self.name} --> Damage: + {self.damage} | Health: {self.health} |") 
 
 
 
@@ -58,6 +54,5 @@ class Potion:
         else:
             print(f"{self.name} --> {self.default_power} default power")
 
-p_index = random.randint(0, len(potion_list)-1)
-p_chosen = potion_list[p_index]
+p_chosen = potion_list[1]
 potion = Potion(p_chosen["name"], p_chosen["health"], p_chosen["max_health"], p_chosen["default_power"])

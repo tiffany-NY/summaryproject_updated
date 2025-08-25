@@ -1,7 +1,4 @@
 import os
-from character import Character, Higherup
-from items import weapon, potion
-import random
 from desc import backstory, rules, item_info
 
 HP = 100

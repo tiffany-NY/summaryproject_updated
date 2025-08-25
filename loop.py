@@ -1,10 +1,10 @@
 import os
 from character import Character, Higherup
-from items import weapon, potion
+from items import Weapon, Potion 
 import random
-from battle_stuff import battle, twilight, enemy, before_battle, continueing, rounds
+from battle_stuff import battle, twilight, before_battle, continueing, at_each_place
 from desc import backstory, rules, item_info
-from map import castle
+from map import castle, details
 from menu import clear, load, save, start, menu
 
 run = True
@@ -18,14 +18,9 @@ while run:
     play = menu()
 
     while play:
-        save()
+        #save()
         input("> click enter to move on ")
         clear()
+        at_each_place()
+        #save()
 
-        castle.show_current_location()
-        input("> press enter to show stats and pick stuff up")
-        before_battle()
-        input("> press enter to start your battle ")
-        rounds()
-        
-        continueing()
