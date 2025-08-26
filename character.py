@@ -110,4 +110,7 @@ class Higherup(Character):
         self.own_inventory.drop_item(item)
 
     def display_inventory(self):
+        """
+        displays the inventory
+        """
         self.own_inventory.show_inventory()

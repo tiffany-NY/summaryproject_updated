@@ -9,6 +9,9 @@ def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
 def save():
+    """
+    saves the file in the txt
+    """
     try:
         with open("load.txt", "w") as file:
             file.write(f"{name}\n{HP}\n{power}\n")
@@ -16,6 +19,9 @@ def save():
         print(f"Error saving game: {e}")
 
 def load():
+    """
+    load the game data from the txt
+    """
     global name, HP, power
     try:
         with open("load.txt", "r") as file:
@@ -32,6 +38,9 @@ def load():
         return False
 
 def start():
+    """
+    introduction of game
+    """
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     print("\t𐙚⋆˚✿˖° Castle of the Two Sisters 𐙚⋆˚✿˖°")
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
@@ -41,6 +50,9 @@ def start():
 
 
 def menu():
+    """
+    the menu panel in which player can choose to create a new game, load previous game, read th rules or quit the game
+    """
     flag = True
     while flag:
         clear()

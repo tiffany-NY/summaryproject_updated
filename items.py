@@ -45,6 +45,9 @@ class Potion:
         self.default_power = default_power
 
     def display_potion_stats(self):
+        """
+        displays how many units of health the potion increases
+        """
         if self.name == "Alicorn elixer":
             print(f"{self.name} --> {self.health} health, {self.max_health} max health, {self.default_power} default power")
         elif len(self.health) > 1:
