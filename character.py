@@ -97,9 +97,11 @@ class Higherup(Character):
 
     def putting_back(self, item):
         """ unequiping item and putting it back in inventory"""
-        if isinstance(holder, Weapon):
+        if isinstance(item, Weapon):
             self.weapon = None
-        self.own_inventory.add_item(item)
+            self.own_inventory.add_item(item)
+        else:
+            return
         
     def pick_up(self, item):
         """Adds item into inventory"""

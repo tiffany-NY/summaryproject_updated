@@ -22,5 +22,11 @@ while run:
         input("> click enter to move on ")
         clear()
         at_each_place()
+        castle.move_location()
+        castle.show_current_location()
         #save()
 
+
+###lock the throne room such that u need the other 5 elements before u can fight nightmare moon
+###add count to elemements to keep track of room
+###add game over code such that u get all the elements then run breaks and win
