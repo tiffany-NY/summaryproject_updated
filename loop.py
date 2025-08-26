@@ -1,10 +1,10 @@
 import os
-from character import Character, Higherup
+from character import Character, Higherup, twilight
 from items import Weapon, Potion 
 import random
-from battle_stuff import battle, twilight, before_battle, continueing, at_each_place
+from battle_stuff import battle, before_battle, continueing, at_each_place
 from desc import backstory, rules, item_info
-from map import castle, details
+from map import castle, details, unlock
 from menu import clear, load, save, start, menu
 
 run = True
@@ -27,6 +27,4 @@ while run:
         #save()
 
 
-###lock the throne room such that u need the other 5 elements before u can fight nightmare moon
-###add count to elemements to keep track of room
-###add game over code such that u get all the elements then run breaks and win
+#add game over code such that u get all the elements then run breaks and win

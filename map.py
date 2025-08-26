@@ -1,4 +1,6 @@
 from menu import menu
+from character import Character, Higherup, twilight
+
         #x = 0    #x = 1   #x = 2
 map = [['Hallway', 'Garden', 'Drawing Room'], #y = 0
         ['Kitchen','Tea Room', 'Study'],  #y = 1
@@ -87,6 +89,10 @@ details = {
     }
 }
 
+def unlock():
+    if twilight.own_inventory.element_count >= 5:
+        return True
+    return False
         
 class Map:
     def __init__(self, map, xcoord: int, ycoord: int) -> None:
@@ -99,60 +105,71 @@ class Map:
         """
         Displays the name of the room Twilight is currently in
         """
-        return f'Your current location is {self.current_location}.'
+        print(f'Your current location is {self.current_location}.')
 
     def display_map(self) -> str:
         """
         Displays the map
         """
-        return self.map
+        for row in self.map:
+            print(row)
 
     def move_location(self) -> None:
         """
-        Updates the coordiates of the player 
+        Updates the coordiates of the player, locks throne room until unlocked
         """
 
         #control for movement
-        if self.ycoord > 0:
-            print('1 - North') #up
+        if unlock() == False:
+            if self.current_location == map[3][0]:
+                print("## You can't move north! its locked!!")
+            else:
+                if self.ycoord > 0:
+                    print('1 - North') #up
 
-        if self.ycoord < len(map) - 1:
-            print('2 - South') #down
+            if self.current_location == map[1][0]:
+                print("## You can't move south! its locked!!")
+            else:
+                if self.ycoord < len(map) - 1:
+                    print('2 - South') #down
+
+            if self.xcoord < len(map[0]) - 1:
+                print('3 - East') #right
+
+            if self.current_location == map[2][1]:
+                print("## You can't move west! its locked!!")
+            else:
+                if self.xcoord > 0:
+                    print('4 - West') #left
+
+            print('5 - Menu')
+
+        else:
+            if self.ycoord > 0:
+                print('1 - North') #up
+            if self.ycoord < len(map) - 1:
+                print('2 - South') #down
+            if self.xcoord < len(map[0]) - 1:
+                print('3 - East') #right
+            if self.xcoord > 0 :
+                print('4 - West') #left
+            print('5 - Menu')
         
-        if self.xcoord < len(map[0]) - 1:
-            print('3 - East') #right
-
-        if self.xcoord > 0 :
-            print('4 - West') #left
-
-        print('5 - Menu')
-
-        #promps user for number representing the movements
         movement = int(input('Input a number for your next move: '))
-
-        #up
         if movement == 1:
             if self.ycoord > 0:
                 self.ycoord -= 1
-
-        #down
         elif movement == 2:
             if self.ycoord < len(map) - 1:
                 self.ycoord += 1
-
-        #right
         elif movement == 3:
             if self.xcoord < len(map[0]) - 1:
                 self.xcoord += 1
-        
-        #left
         elif movement == 4:
             if self.xcoord > 0:
                 self.xcoord -= 1
-        
         elif movement == 5:
             menu()
-
         else:
             self.move_location()
             

@@ -1,5 +1,3 @@
-import random
-
 weapon_list = [{"name": "sword", "damage": 10, "health": 0},
             {"name": "kaboom spell", "damage": 10, "health": -5},
             {"name": "pinkie spell", "damage": 20, "health":-5},
@@ -23,11 +21,12 @@ class Weapon:
         """
         if self.name == "wobuffet wall":
             print(f"{self.name} --> Blocks enemy attacks(x2)") 
+        
         elif self.health == 0:
             print(f"{self.name} --> Damage: + {self.damage} |") 
+        
         else:
             print(f"{self.name} --> Damage: + {self.damage} | Health: {self.health} |") 
-
 
 
 potion_list = [{"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0", "chance": 50},
