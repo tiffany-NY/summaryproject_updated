@@ -9,12 +9,6 @@ One who will brave monsters, traps, and secrets untold.
 
 Know this, chosen one: Only by uniting the six Elements of Harmony—Loyalty, Honesty, Generosity, Kindness, Laughter, and Magic—shall Nightmare Moon be cast down,and Princess Luna restored to her true self.
 Should you falter, the Elements shall fall from your grasp, and if Nightmare Moon seizes them all, eternal night shall claim Equestria.
-
-Should your health fail, the darkness claims you,and the Elements scatter from your hooves.If Nightmare Moon seizes them first,Equestria is lost to eternal night.
-Yet as the moon wanes and waxes,so too may destiny grant you another chance.
-
-So it is written. So it awaits.
-Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
 """
 
 rules = """
@@ -45,4 +39,13 @@ Weapons & Spells
 * Pinkie Pulse: +20 power, but drains -10 health.
 * Shielding Spell (×2 uses): Block all enemy damage for one turn.
 These relics may tip the scales of light or shadow—wield them with wisdom.
+
+Should you gather the six Elements and triumph in the Throne Room, the prophecy is fulfilled:Nightmare Moon falls, Princess Luna is reborn,and harmony is restored to Equestria.
+
+
+Should your health fail, the darkness claims you,and the Elements scatter from your hooves.If Nightmare Moon seizes them first,Equestria is lost to eternal night.
+Yet as the moon wanes and waxes,so too may destiny grant you another chance.
+
+So it is written. So it awaits.
+Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
 """
