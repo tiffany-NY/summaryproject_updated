@@ -8,6 +8,10 @@ from menu import clear
 twilight = Higherup(name="Twilight", health=100, power=5, color="green")
 
 def before_battle():
+    """
+    Displays the stats and inventory of Twilight and
+    Prompts user to equip weapons or drink potions
+    """
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     twilight.display_stats()
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
@@ -25,6 +29,10 @@ def before_battle():
 
 
 def battle(enemy):
+    """
+    Displays and updates stats and health of Twilight before the battle starts and after each attack and 
+    Prompts user to attack
+    """
     clear()
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     twilight.display_stats()
@@ -52,6 +60,10 @@ def battle(enemy):
         return False
 
 def continueing(enemy):
+    """
+    Prompts user to pick up items (potions, elements and weapons) dropped by the enemy after a battle
+    If input == 'yes', updates and displays inventory, if input == 'no', continue the game
+    """
     if twilight.alive():
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
             print(f"oh look! {enemy.name} dropped an item!")
@@ -96,6 +108,11 @@ def continueing(enemy):
         quit() 
 
 def at_each_place():
+    """
+    Displays current location
+    Define stats of enemy
+    Conducts battle
+    """
     castle.show_current_location()
     current = castle.current_location
     enemy = Character(name=details[current]["enemy"][0], health=details[current]["enemy"][1], power=details[current]["enemy"][2], color="red")
