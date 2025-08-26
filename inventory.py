@@ -103,4 +103,3 @@ class Inventory:
             print(f"{index}: {current.item.name}")
             current = current.next
             index += 1
-

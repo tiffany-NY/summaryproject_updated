@@ -46,7 +46,7 @@ class Potion:
 
     def display_potion_stats(self):
         """
-        displays how many units of health the potion increases
+        disply all the stats of the potions
         """
         if self.name == "Alicorn elixer":
             print(f"{self.name} --> {self.health} health, {self.max_health} max health, {self.default_power} default power")
@@ -57,5 +57,6 @@ class Potion:
         else:
             print(f"{self.name} --> {self.default_power} default power")
 
-p_chosen = potion_list[1]
-potion = Potion(p_chosen["name"], p_chosen["health"], p_chosen["max_health"], p_chosen["default_power"])
+class Element:
+    def __init__(self, element):
+        self.name = element
