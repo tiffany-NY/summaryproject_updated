@@ -100,6 +100,7 @@ class Higherup(Character):
         if isinstance(item, Weapon):
             self.weapon = None
             self.own_inventory.add_item(item)
+            print(f"{item.name} has been added back into the inventory")
         else:
             return
         
@@ -107,12 +108,14 @@ class Higherup(Character):
         """Adds item into inventory"""
         self.own_inventory.add_item(item)
 
-    def drop(self, item):
-        """Drops item from inventory"""
-        self.own_inventory.drop_item(item)
+    # def drop(self, item):
+    #     """Drops item from inventory"""
+    #     self.own_inventory.drop_item(item)
 
     def display_inventory(self):
         """
         displays the inventory
         """
         self.own_inventory.show_inventory()
+
+twilight = Higherup(name="Twilight", health=100, power=5, color="green")

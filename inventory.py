@@ -1,3 +1,5 @@
+from items import Element
+
 class Node:
     def __init__(self, item):
         self.item = item
@@ -7,6 +9,7 @@ class Inventory:
     def __init__(self):
         self.head = None  # Start of the linked list
         self.count = 0
+        self.element_count = 0
 
     def add_item(self, item):
         """
@@ -36,6 +39,8 @@ class Inventory:
                 current = current.next
             current.next = new_node
         self.count += 1
+        if isinstance(item, Element):
+            self.element_count += 1
         print(f"{item.name} added to inventory.")
 
     def drop_item(self, item):

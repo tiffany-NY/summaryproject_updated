@@ -1,11 +1,11 @@
-from character import Character, Higherup
+from character import Character, Higherup, twilight
 from items import Weapon, Potion, Element
 import random
 import os
 from map import castle, details
 from menu import clear
 
-twilight = Higherup(name="Twilight", health=100, power=5, color="green")
+
 
 def before_battle():
     """
@@ -19,15 +19,13 @@ def before_battle():
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     choices = input("> would you like to equip a weapon or drink a potion before starting your battle? ")
     while choices == "yes":
+        twilight.display_inventory()
         thing = input("> what would you like to use? or type 'cancel' to exit: ") 
         if thing == 'cancel':
             print('Equip operation cancelled.')
+            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+            choices = -1
         else:
-            try:
-                thing = int(thing)
-            except:
-                print('Please enter a valid input.')
-                before_battle() #check
             twilight.using_item(int(thing)-1)
         twilight.display_stats()
     twilight.display_inventory()
@@ -94,7 +92,7 @@ def continueing(enemy):
             if 'elements' in list(details[current]["item"].keys()):
                 elements = Element(details[current]["item"]["elements"])
                 print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-                print(f"congratulations! u found the {elements}")
+                print(f"congratulations! u found the {elements.name}")
                 option = input("> do u wanna pick up the element? (hint: u need it to win!!!!) ")
                 if option == "yes":
                     twilight.pick_up(elements)
@@ -102,14 +100,14 @@ def continueing(enemy):
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
             twilight.putting_back(twilight.weapon)
             twilight.display_inventory()
-            
+            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
             input("> click enter to continue! ")
             clear()
             print("you can continue to move around the map!!!!!!!!!!!!")
             return True
 
     else:
-        print("game over loser")
+        print("game over...thanks for playing tho!")
         quit() 
 
 def at_each_place():
@@ -129,5 +127,3 @@ def at_each_place():
         battling = battle(enemy)
     continueing(enemy)
 
-
-before_battle()
