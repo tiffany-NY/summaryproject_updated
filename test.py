@@ -1,6 +1,7 @@
 # import mud
 # import menu
 import map
+from map import Map
 # import main
 from items import Weapon, Potion
 from inventory import Inventory
@@ -8,6 +9,7 @@ from inventory import Inventory
 # import character
 # import battle_stuff
 
+print(map)
 
 def run_inventory_tests():
     """
@@ -81,4 +83,4 @@ def run_map_tests():
     game_map.current_location = map[game_map.ycoord][game_map.xcoord]
     assert game_map.current_location == "room4"
 
-    
+run_map_tests()    

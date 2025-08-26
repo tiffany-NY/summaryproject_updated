@@ -17,13 +17,17 @@ class Inventory:
         if self.count >= 15:
             self.show_inventory()
             choice = input('> Your inventory is full. Would you like to remove some items? ')
-            if choice == 'No':
+            choice.lower()
+            if choice == 'no':
                 return
-
-            removal = input("> What would you like to remove? ")
-            if not self.drop_item(removal):
-                print(f"{item} was not added.")
-                return
+            elif choice == 'yes':
+                removal = input("> What would you like to remove? ")
+                if not self.drop_item(removal):
+                    print(f"{item.name} was not added.")
+                    return
+            else:
+                print('Please enter a valid function.')
+                return self.add_item(item)
         if self.head is None:
             self.head = new_node
         else:
@@ -44,13 +48,13 @@ class Inventory:
             current = self.head
             prev = None
             while current:
-                if current.item == item:
+                if current.item.name == item:
                     if prev:
                         prev.next = current.next
                     else:
                         self.head = current.next
                     self.count -= 1
-                    print(f"{item.name} dropped from inventory.")
+                    print(f"{item} dropped from inventory.")
                     return True
                 prev = current
                 current = current.next
@@ -100,8 +104,3 @@ class Inventory:
             current = current.next
             index += 1
 
-# player_inventory = Inventory()
-# weapon3 = Weapon("sword", 10, 0)
-# player_inventory.add_item(weapon3)
-
-# hold = use_item(1)
