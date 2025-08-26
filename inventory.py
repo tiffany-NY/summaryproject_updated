@@ -99,9 +99,3 @@ class Inventory:
             print(f"{index}: {current.item.name}")
             current = current.next
             index += 1
-
-# player_inventory = Inventory()
-# weapon3 = Weapon("sword", 10, 0)
-# player_inventory.add_item(weapon3)
-
-# hold = use_item(1)
