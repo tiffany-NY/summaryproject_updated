@@ -1,4 +1,4 @@
-from items import Weapon, Potion, weapon, potion
+from items import Weapon, Potion
 from inventory import Inventory
 from health_bar import HealthBar
 
@@ -86,9 +86,9 @@ class Higherup(Character):
         elif self.potion.default_power[0] == "x":
             self.power *= int(self.potion.default_power[1:])
 
-    def using_item(self, item):
+    def using_item(self, index):
         """uses item"""
-        holder = self.own_inventory.use_item(item)
+        holder = self.own_inventory.use_item(index)
         if isinstance(holder, Weapon):
             self.weapon = holder
         if isinstance(holder, Potion):

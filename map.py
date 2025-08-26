@@ -9,77 +9,78 @@ map = [['Hallway', 'Garden', 'Drawing Room'], #y = 0
 details = {
     'Hallway': {
         'name': 'Hallway',
-        'enemy': ['doofus1', 100, 5],
-        'weapon': ['sword', 10, 0]
+        'enemy': ['doofus1', 100, 3],
+        'item': {'weapon': {"name": "sword", "damage": 10, "health": 0}}
     },
     'Garden': {
         'name': 'Garden',
         'enemy': ['doofus2', 100, 7],
-        'weapon': ['kaboom spell', 10, -5]
+        'item': {'weapon': {"name": "kaboom spell", "damage": 10, "health": -5}}
     },
     'Drawing Room': {
         'name': 'Drawing Room',
         'enemy': ['doofus3', 100, 7],
-        'potion': ['Mrs scowers all purpose maggi mee', 'x2', '0', '0', 50]
+        'item': {'elements': "element of laughter"}
     },
     'Kitchen': {
         'name': 'Kitchen',
         'enemy': ['doofus4', 100, 10],
-        'potion': ['Wiggenweld juice', '+10', '0', '0', '50']
+        'item': {'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0", "chance": 50}}
     },
     'Tea Room': {
         'name': 'Tea Room',
         'enemy': ['doofus5', 100, 10],
-        'weapon': ['Pinkie spell', 20, -5]
+        'item': {'elements': "element of honesty"}
     },
     'Study': {
-        'name': 'Kitchen',
+        'name': 'Study',
         'enemy': ['doofus6', 100, 13],
-        'potion': ['Alicorn Elixer', '+20', '+10', '+10', '10']
+        'item': {'potion': {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10", "chance": 10}}
     },
     'Throne Room': {
         'name': 'Throne Room',
-        'enemy': ['Nightmare Moon', 250, 30]
+        'enemy': ['Nightmare Moon', 250, 30],
+        'item': {'elements': "element of magic"}
     },
     'Chambers': {
         'name': 'Chambers',
         'enemy': ['doofus7', 100, 15],
-        'weapon': ['Wobuffet Wall', 0, 0]
+        'item': {'weapon': {"name": "wobuffet wall", "damage": 0, "health": 0}}
     },
     'Artillery': {
         'name': 'Artillery',
         'enemy': ['doofus8', 100, 15],
-        'potion': ['Boosting Salve', '0', 'x2', '0', 30]
+        'item': {'elements': "element of generosity"}
     },
     'Dungeon': {
         'name': 'Dungeon',
         'enemy': ['doofus9', 100, 18],
-        'potion': ['Gigantamax Power', '0', '0', 'x2', 20]
+        'item': {'potion': {"name": "Gigantamax powder", "health": "0", "max_health": "0", "default_power": "x2", "chance": 20}}
     },
     'Crown Room': {
         'name': 'Crowd Room',
         'enemy': ['doofus10', 100, 12],
-        'weapon': ['kaboom spell', 10, -5]
+        'item': {'potion': {"name": "Boosting salve", "health": "0", "max_health": "x2", "default_power": "0", "chance": 30}}
     },
     'Ballroom': {
         'name': 'Ballroom',
         'enemy': ['doofus11', 100, 14],
-        'potion': ['Mrs scowers all purpose maggi mee', 'x2', '0', '0', 50]
+        'item': {'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0", "chance": 50}}
     },
     'Stables': {
         'name': 'Stables',
         'enemy': ['doofus12', 100, 8],
-        'weapon': ['Pinkie Spell', 20, -5]
+        'item': {'weapon': {"name": "pinkie spell", "damage": 20, "health":-5}}
     },
     'Gallery': {
         'name': 'Gallery',
         'enemy': ['doofus13', 100, 15],
-        'potion': ['Kaboom Spell', 10, -5]
+        'item': {'elements': "element of loyalty"}
     },
     'Library': {
         'name': 'Library',
         'enemy': ['doofus14', 100, 8],
-        'potion': ['Gigantamax Power', '0', '0', 'x2', 20]
+        'item': {'elements': "element of kindness"}
     }
 }
 
