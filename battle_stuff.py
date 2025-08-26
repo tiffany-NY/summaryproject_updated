@@ -10,6 +10,10 @@ weapon3 = Weapon("sword", 10, 0)
 twilight.pick_up(weapon3)
 
 def before_battle():
+    """
+    Displays the stats and inventory of Twilight and
+    Prompts user to equip weapons or drink potions
+    """
     print("-------------------")
     twilight.display_stats()
     print("-------------------")
@@ -29,6 +33,10 @@ def before_battle():
 
 
 def battle(enemy):
+    """
+    Displays and updates stats and health of Twilight before the battle starts and after each attack and 
+    Prompts user to attack
+    """
     clear()
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     twilight.display_stats()
@@ -56,6 +64,10 @@ def battle(enemy):
         return False
 
 def continueing(enemy):
+    """
+    Prompts user to pick up items (potions, elements and weapons) dropped by the enemy after a battle
+    If input == 'yes', updates and displays inventory, if input == 'no', continue the game
+    """
     if twilight.alive():
             print(f"oh look! {enemy.name} dropped an item!")
             input("> click enter to see what it is! ")
@@ -88,6 +100,11 @@ def continueing(enemy):
         quit() 
 
 def at_each_place():
+    """
+    Displays current location
+    Define stats of enemy
+    Conducts battle
+    """
     castle.show_current_location()
 
     current = castle.current_location
