@@ -61,50 +61,47 @@ class Inventory:
                 print("Drop operation cancelled.")
                 return False
             item = choice
-
-    def use_item(self, item):
+    
+    def use_item(self, indexs):
         """
         Equips item from the inventory.
         If not found, continuously prompt the user to retry or cancel.
         Returns the equipped item if successful, None if cancelled.
         """
-        while True:
-            current = self.head
-            prev = None
-
-            while current:
-                if current.item == item:
-                    if prev:
-                        prev.next = current.next
-                    else:
-                        self.head = current.next
-
-                    self.count -= 1
-                    print(f"{item.name} equipped.")
-                    return item
-
-                prev = current
-                current = current.next
-
-            print(f"{item.name} not found in inventory.")
-            choice = input("Try again? Enter a new item name or type 'cancel' to exit: ").strip()
-            if choice.lower() == 'cancel':
-                print("Equip operation cancelled.")
-                return 
-            item = choice
+        current = self.head
+        prev = None
+        i = 0
+        while current:
+            if i == indexs:
+                if prev:
+                    prev.next = current.next
+                else:
+                    self.head = current.next
+                self.count -= 1
+                return current.item
+            prev = current
+            current = current.next
+            i += 1
+        return None
 
     def show_inventory(self):
         """
         display all the items in the inventory
         """
         current = self.head
+        index = 1
         if not current:
             print("Inventory is empty.")
             return
         print(f'You have {self.count}/15 items in the inventory')
         print("Inventory:")
         while current:
-            print(f"- {current.item.name}")
+            print(f"{index}: {current.item.name}")
             current = current.next
+            index += 1
 
-player_inventory = Inventory()
+# player_inventory = Inventory()
+# weapon3 = Weapon("sword", 10, 0)
+# player_inventory.add_item(weapon3)
+
+# hold = use_item(1)

@@ -1,5 +1,4 @@
-backstory = 
-"""
+backstory = """
 Awaken, O wanderer, to the words etched in the stones of time.
 When the world of Equestria lies fractured, and harmony is but a fading memory, the shadow of Nightmare Moon shall descend upon all.
 Once she was Princess Luna, guardian of dreams, but envy and sorrow twisted her into darkness unending.
@@ -18,8 +17,7 @@ So it is written. So it awaits.
 Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
 """
 
-rules = 
-"""
+rules = """
 Your path begins in the vast castle, within lies the Garden, Kitchen, Tea Room, Drawing Room, Study, Chambers, Artillery, Crown Room, and Dungeon.
 At the end, the Throne Room, where Nightmare Moon herself awaits.
 Each chamber holds secrets and dangers so tread carefully, for every step binds your destiny.
@@ -34,8 +32,7 @@ Your choices in combat are these:
 Remember: every choice carves the story of your soul.
 """
 
-Item info = 
-"""
+item_info = """
 Potions & Elixirs
 * Mrs Scower’s All-Purpose Maggi Mee More: Restores ×2 health.
 * Wiggenweld Elixir: +10 health.
