@@ -89,7 +89,6 @@ details = {
 
         
 class Map:
-
     def __init__(self, map, xcoord: int, ycoord: int) -> None:
         self.map = map
         self.xcoord = xcoord #xcoord of coordinates of player
@@ -100,14 +99,13 @@ class Map:
         """
         Displays the name of the room Twilight is currently in
         """
-        print(f'Your current location is {self.current_location}.')
+        return f'Your current location is {self.current_location}.'
 
     def display_map(self) -> str:
         """
         Displays the map
         """
-        for row in self.map:
-            print(row)
+        return self.map
 
     def move_location(self) -> None:
         """

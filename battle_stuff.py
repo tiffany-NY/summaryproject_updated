@@ -19,12 +19,17 @@ def before_battle():
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     choices = input("> would you like to equip a weapon or drink a potion before starting your battle? ")
     while choices == "yes":
-        thing = input("> what would you like to use? or type 'cancel' to exit: ")  #add validation for str input
+        thing = input("> what would you like to use? or type 'cancel' to exit: ") 
         if thing == 'cancel':
-            break
+            print('Equip operation cancelled.')
         else:
+            try:
+                thing = int(thing)
+            except:
+                print('Please enter a valid input.')
+                before_battle() #check
             twilight.using_item(int(thing)-1)
-            twilight.display_stats()
+        twilight.display_stats()
     twilight.display_inventory()
 
 
@@ -123,3 +128,6 @@ def at_each_place():
     while battling:
         battling = battle(enemy)
     continueing(enemy)
+
+
+before_battle()
