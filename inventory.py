@@ -65,7 +65,7 @@ class Inventory:
                 current = current.next
 
             print(f"{item.name} not found in inventory.")
-            choice = input("Try again? Enter a new item name or type 'cancel' to exit: ").strip()
+            choice = input("> Try again? Enter a new item name or type 'cancel' to exit: ").strip()
             if choice.lower() == 'cancel':
                 print("Drop operation cancelled.")
                 return False

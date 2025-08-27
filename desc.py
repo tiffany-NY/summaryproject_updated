@@ -49,3 +49,10 @@ Yet as the moon wanes and waxes,so too may destiny grant you another chance.
 So it is written. So it awaits.
 Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
 """
+
+winner = """
+Congratulations!!! You have collected all the elements of harmony yippee!!!
+With all the elements, you restored the magic of friendship in Equastria and purified Nightmare Moon back to Princess Luna!
+And with that your mission has ended and Equastria is safe! till next time!
+THANKS FOR PLAYING!!!
+"""
