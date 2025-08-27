@@ -64,7 +64,7 @@ def menu():
         
         if choice == "1":
             clear()
-            name = input("> What's your name: ")
+            name = input("> what's your name: ")
             print(f"Welcome, {name}!")
             flag = False
             return True
@@ -76,12 +76,12 @@ def menu():
                 flag = False
                 return True
             else:
-                input("Press Enter to return to menu...")
+                input("> click enter to return to menu...")
 
         elif choice == "3":
             clear()
             print(rules)
-            input("\nPress Enter to return to menu")
+            input("\n> click enter to return to menu...")
             flag = False
 
         elif choice == "4":

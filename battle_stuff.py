@@ -4,7 +4,7 @@ import random
 import os
 from map import castle, details
 from menu import clear
-
+from desc import winner
 
 
 def before_battle():
@@ -15,20 +15,23 @@ def before_battle():
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     twilight.display_stats()
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-    twilight.display_inventory()
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-    choices = input("> would you like to equip a weapon or drink a potion before starting your battle? ")
-    while choices == "yes":
+    if twilight.own_inventory.count > 0:
         twilight.display_inventory()
-        thing = input("> what would you like to use? or type 'cancel' to exit: ") 
-        if thing == 'cancel':
-            print('Equip operation cancelled.')
+        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+        choices = input("> would you like to equip a weapon or drink a potion before starting your battle? ")
+        while choices == "yes":
+            twilight.display_inventory()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-            choices = -1
-        else:
-            twilight.using_item(int(thing)-1)
-        twilight.display_stats()
-    twilight.display_inventory()
+            thing = input("> what would you like to use? or type 'cancel' to exit: ") 
+            if thing == 'cancel':
+                print('Equip operation cancelled.')
+                print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+                choices = -1
+            else:
+                twilight.using_item(int(thing)-1)
+            twilight.display_stats()
+            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+        twilight.display_inventory()
 
 
 def battle(enemy):
@@ -50,7 +53,7 @@ def battle(enemy):
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
 
     if twilight.alive() and enemy.alive():
-        input("attack ah?")
+        input("> click enter to attack ")
         return True
     else:
         if twilight.alive():
@@ -62,16 +65,18 @@ def battle(enemy):
             print("oh u died")
         return False
 
+
 def continueing(enemy):
     """
     Prompts user to pick up items (potions, elements and weapons) dropped by the enemy after a battle
     If input == 'yes', updates and displays inventory, if input == 'no', continue the game
     """
     if twilight.alive():
+        current = castle.current_location
+        if None not in list(details[current]["item"].values()):
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
             print(f"oh look! {enemy.name} dropped an item!")
             input("> click enter to see what it is! ")
-            current = castle.current_location
             
             if 'weapon' in list(details[current]["item"].keys()):
                 weapon = Weapon(details[current]["item"]["weapon"]["name"], details[current]["item"]["weapon"]["damage"], details[current]["item"]["weapon"]["health"])
@@ -96,19 +101,24 @@ def continueing(enemy):
                 option = input("> do u wanna pick up the element? (hint: u need it to win!!!!) ")
                 if option == "yes":
                     twilight.pick_up(elements)
-            
+                    details[current]["item"]["elements"] = None
+                    game_over()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
             twilight.putting_back(twilight.weapon)
             twilight.display_inventory()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-            input("> click enter to continue! ")
-            clear()
-            print("you can continue to move around the map!!!!!!!!!!!!")
-            return True
+        else:
+            print(f"awh man {enemy.name} did not drop anything :(")
+
+        input("> click enter to continue! ")
+        clear()
+        print("you can continue to move around the map!!!!!!!!!!!!")
+        return True
 
     else:
         print("game over...thanks for playing tho!")
         quit() 
+
 
 def at_each_place():
     """
@@ -127,3 +137,10 @@ def at_each_place():
         battling = battle(enemy)
     continueing(enemy)
 
+
+def game_over():
+    """checks if all elements have been collected, if all 6 collected, game is won and over"""
+    if twilight.own_inventory.element_count == 6:
+        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+        print(winner)
+        quit()

@@ -25,7 +25,7 @@ details = {
         'name': 'Drawing Room',
         'enemy': ['doofus3', 100, 5],
         'item': {'elements': "element of laughter",
-                'potion': {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10"}}
+                'potion': {"name": "Alicorn elixer", "health": "+30", "max_health": "+20", "default_power": "+10"}}
     },
     'Kitchen': {
         'name': 'Kitchen',
@@ -40,17 +40,18 @@ details = {
     'Study': {
         'name': 'Study',
         'enemy': ['doofus6', 50, 3],
-        'item': {'potion': {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10"}}
+        'item': {'potion': {"name": "Gigantamax powder", "health": "0", "max_health": "0", "default_power": "x2"}}
     },
     'Throne Room': {
         'name': 'Throne Room',
-        'enemy': ['Nightmare Moon', 250, 30],
+        'enemy': ['Nightmare Moon', 200, 20],
         'item': {'elements': "element of magic"}
     },
     'Chambers': {
         'name': 'Chambers',
         'enemy': ['doofus7', 50, 5],
-        'item': {'weapon': {"name": "wobuffet wall", "damage": 0, "health": 0}}
+        'item': {'weapon': {"name": "wobuffet wall", "damage": 0, "health": 0},
+        'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
     },
     'Artillery': {
         'name': 'Artillery',
@@ -59,8 +60,8 @@ details = {
     },
     'Dungeon': {
         'name': 'Dungeon',
-        'enemy': ['doofus9', 50, 3],
-        'item': {'potion': {"name": "Gigantamax powder", "health": "0", "max_health": "0", "default_power": "x2"}}
+        'enemy': ['doofus9', 50, 5],
+        'item': {'potion': {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10"}}
     },
     'Crown Room': {
         'name': 'Crowd Room',
@@ -79,13 +80,14 @@ details = {
     },
     'Gallery': {
         'name': 'Gallery',
-        'enemy': ['doofus13', 100, 5],
+        'enemy': ['doofus13', 100, 7],
         'item': {'elements': "element of loyalty"}
     },
     'Library': {
         'name': 'Library',
         'enemy': ['doofus14', 100, 7],
-        'item': {'elements': "element of kindness"}
+        'item': {'elements': "element of kindness",
+        'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
     }
 }
 
@@ -155,7 +157,7 @@ class Map:
                 print('4 - West') #left
             print('5 - Menu')
         
-        movement = int(input('Input a number for your next move: '))
+        movement = int(input('> enter a number for your next move: '))
         if movement == 1:
             if self.ycoord > 0:
                 self.ycoord -= 1

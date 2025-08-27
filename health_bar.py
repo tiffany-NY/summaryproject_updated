@@ -20,9 +20,11 @@ class HealthBar:
         self.color = self.colors.get(color) or self.colors["default"]
 
     def update(self) -> None:
+        """updates the health of character"""
         self.current_value = self.entity.health
 
     def draw(self) -> None:
+        """draws the health bar based on colour and remaining health"""
         remaining_bars = round(self.current_value / self.max_value * int(self.length))
         lost_bars = self.length - remaining_bars
         print(f"{self.entity.name}'s HEALTH: {self.entity.health}/{self.entity.health_max}")

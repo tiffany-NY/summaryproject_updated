@@ -108,10 +108,6 @@ class Higherup(Character):
         """Adds item into inventory"""
         self.own_inventory.add_item(item)
 
-    # def drop(self, item):
-    #     """Drops item from inventory"""
-    #     self.own_inventory.drop_item(item)
-
     def display_inventory(self):
         """
         displays the inventory
