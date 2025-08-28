@@ -64,7 +64,7 @@ details = {
         'item': {'potion': {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10"}}
     },
     'Crown Room': {
-        'name': 'Crowd Room',
+        'name': 'Crown Room',
         'enemy': ['doofus10', 50, 5],
         'item': {'potion': {"name": "Boosting salve", "health": "0", "max_health": "x2", "default_power": "0"}}
     },

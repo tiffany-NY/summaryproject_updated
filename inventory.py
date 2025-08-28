@@ -19,7 +19,7 @@ class Inventory:
         new_node = Node(item)
         if self.count >= 15:
             self.show_inventory()
-            choice = input('> Your inventory is full. Would you like to remove some items? ')
+            choice = input('> Your inventory is full. Would you like to remove some items? (yes/no) ')
             choice.lower()
             if choice == 'no':
                 return
