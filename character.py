@@ -90,7 +90,17 @@ class Higherup(Character):
         """uses item"""
         holder = self.own_inventory.use_item(index)
         if isinstance(holder, Weapon):
-            self.weapon = holder
+            if self.weapon != None:
+                place = self.weapon
+                change = input("> you already equipped a weapon. Are you sure you want to change? you can only equip one (yes/no): ")
+                if change == "yes":
+                    self.putting_back(place)
+                    self.weapon = holder
+                elif change == "no":
+                    self.putting_back(holder)
+                    self.weapon = place
+            else:
+                self.weapon = holder
         if isinstance(holder, Potion):
             self.potion = holder
             self.use_potion(holder)
