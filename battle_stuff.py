@@ -18,7 +18,7 @@ def before_battle():
     if twilight.own_inventory.count > 0:
         twilight.display_inventory()
         print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-        choices = input("> would you like to equip a weapon or drink a potion before starting your battle? ")
+        choices = input("> would you like to equip a weapon or drink a potion before starting your battle? (yes/no) ")
         while choices == "yes":
             twilight.display_inventory()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
@@ -58,11 +58,11 @@ def battle(enemy):
     else:
         if twilight.alive():
             clear()
-            print("yipee you won !!!")
+            print("yipee you won!")
         
         else:
             clear()
-            print("oh you died")
+            print("oh no you died")
         return False
 
 
@@ -82,7 +82,7 @@ def continueing(enemy):
                 weapon = Weapon(details[current]["item"]["weapon"]["name"], details[current]["item"]["weapon"]["damage"], details[current]["item"]["weapon"]["health"])
                 print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
                 print(weapon.display_weapon_stats())
-                option = input("> do u wanna pick up the weapon? ")
+                option = input("> do u wanna pick up the weapon? (yes/no) ")
                 if option == "yes":
                     twilight.pick_up(weapon)
 
@@ -90,7 +90,7 @@ def continueing(enemy):
                 potion = Potion(details[current]["item"]["potion"]["name"], details[current]["item"]["potion"]["health"], details[current]["item"]["potion"]["max_health"], details[current]["item"]["potion"]["default_power"])
                 print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
                 print(potion.display_potion_stats())
-                option = input("> do u wanna pick up the potion? ")
+                option = input("> do u wanna pick up the potion? (yes/no) ")
                 if option == "yes":
                     twilight.pick_up(potion)
             
@@ -98,7 +98,7 @@ def continueing(enemy):
                 elements = Element(details[current]["item"]["elements"])
                 print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
                 print(f"congratulations! u found the {elements.name}")
-                option = input("> do u wanna pick up the element? (hint: u need it to win!!!!) ")
+                option = input("> do u wanna pick up the element? (hint: u need it to win!!!!) (yes/no) ")
                 if option == "yes":
                     twilight.pick_up(elements)
                     details[current]["item"]["elements"] = None
