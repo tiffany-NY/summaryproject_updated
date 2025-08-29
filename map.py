@@ -120,8 +120,10 @@ class Map:
         """
         Updates the coordiates of the player, locks throne room until unlocked
         """
-
+        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+        self.show_current_location()
         #control for movement
+
         if unlock() == False:
             if self.current_location == map[3][0]:
                 print("## You can't move north! its locked!!")
