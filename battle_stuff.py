@@ -58,11 +58,11 @@ def battle(enemy):
     else:
         if twilight.alive():
             clear()
-            print("yipee u won !!!")
+            print("yipee you won !!!")
         
         else:
             clear()
-            print("oh u died")
+            print("oh you died")
         return False
 
 
@@ -112,7 +112,7 @@ def continueing(enemy):
 
         input("> click enter to continue! ")
         clear()
-        print("you can continue to move around the map!!!!!!!!!!!!")
+        print("you can continue to move around the map!")
         return True
 
     else:
