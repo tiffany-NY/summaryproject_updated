@@ -11,35 +11,35 @@ map = [['Hallway', 'Garden', 'Drawing Room'], #y = 0
 details = {
     'Hallway': {
         'name': 'Hallway',
-        'enemy': ['doofus1', 50, 3],
+        'enemy': ['Nightbearers Red', 50, 3],
         'item': {'weapon': {"name": "sword", "damage": 10, "health": 0},
                  'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}
         }
     },
     'Garden': {
         'name': 'Garden',
-        'enemy': ['doofus2', 50, 3],
+        'enemy': ['Nightbearers Orange', 50, 3],
         'item': {'weapon': {"name": "kaboom spell", "damage": 10, "health": -5}}
     },
     'Drawing Room': {
         'name': 'Drawing Room',
-        'enemy': ['doofus3', 100, 5],
+        'enemy': ['Nightbearers Yellow', 100, 5],
         'item': {'elements': "element of laughter",
                 'potion': {"name": "Alicorn elixer", "health": "+30", "max_health": "+20", "default_power": "+10"}}
     },
     'Kitchen': {
         'name': 'Kitchen',
-        'enemy': ['doofus4', 50, 3],
+        'enemy': ['Nightbearers Green', 50, 3],
         'item': {'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
     },
     'Tea Room': {
         'name': 'Tea Room',
-        'enemy': ['doofus5', 100, 5],
+        'enemy': ['Nightbearers Blue', 100, 5],
         'item': {'elements': "element of honesty"}
     },
     'Study': {
         'name': 'Study',
-        'enemy': ['doofus6', 50, 3],
+        'enemy': ['Nightbearers Indigo', 50, 3],
         'item': {'potion': {"name": "Gigantamax powder", "health": "0", "max_health": "0", "default_power": "x2"}}
     },
     'Throne Room': {
@@ -49,43 +49,43 @@ details = {
     },
     'Chambers': {
         'name': 'Chambers',
-        'enemy': ['doofus7', 50, 5],
+        'enemy': ['Nightbearers Purple', 50, 5],
         'item': {'weapon': {"name": "wobuffet wall", "damage": 0, "health": 0},
         'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
     },
     'Artillery': {
         'name': 'Artillery',
-        'enemy': ['doofus8', 100, 7],
+        'enemy': ['Nightbearers Pink', 100, 7],
         'item': {'elements': "element of generosity"}
     },
     'Dungeon': {
         'name': 'Dungeon',
-        'enemy': ['doofus9', 50, 5],
+        'enemy': ['Nightbearers Black', 50, 5],
         'item': {'potion': {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10"}}
     },
     'Crown Room': {
         'name': 'Crown Room',
-        'enemy': ['doofus10', 50, 5],
+        'enemy': ['Nightbearers White', 50, 5],
         'item': {'potion': {"name": "Boosting salve", "health": "0", "max_health": "x2", "default_power": "0"}}
     },
     'Ballroom': {
         'name': 'Ballroom',
-        'enemy': ['doofus11', 50, 7],
+        'enemy': ['Nightbearers Brown', 50, 7],
         'item': {'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
     },
     'Stables': {
         'name': 'Stables',
-        'enemy': ['doofus12', 50, 3],
+        'enemy': ['Nightbearers Magenta', 50, 3],
         'item': {'weapon': {"name": "pinkie spell", "damage": 20, "health":-5}}
     },
     'Gallery': {
         'name': 'Gallery',
-        'enemy': ['doofus13', 100, 7],
+        'enemy': ['Nightbearers Grey', 100, 7],
         'item': {'elements': "element of loyalty"}
     },
     'Library': {
         'name': 'Library',
-        'enemy': ['doofus14', 100, 7],
+        'enemy': ['Nightbearers Violently neon chartreuse', 100, 7],
         'item': {'elements': "element of kindness",
         'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
     }
