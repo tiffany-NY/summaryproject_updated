@@ -31,6 +31,7 @@ def before_battle():
                 choices = -1
             else:
                 twilight.using_item(int(thing)-1)
+            clear()
             twilight.display_stats()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
         twilight.display_inventory()
@@ -95,6 +96,7 @@ def continueing(enemy):
                 option = input("> do u wanna pick up the potion? (yes/no) ")
                 if option == "yes":
                     twilight.pick_up(potion)
+                
             
             if 'elements' in list(details[current]["item"].keys()):
                 elements = Element(details[current]["item"]["elements"])
