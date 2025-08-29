@@ -19,7 +19,9 @@ def before_battle():
         twilight.display_inventory()
         print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
         choices = input("> would you like to equip a weapon or drink a potion before starting your battle? (yes/no) ")
+        clear()
         while choices == "yes":
+            clear()
             twilight.display_inventory()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
             thing = input("> what would you like to use? or type 'cancel' to exit: ") 
