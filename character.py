@@ -73,8 +73,8 @@ class Player(Character):
 
     def __init__(self, name: str, health: int, power: int, color):
         super().__init__(name, health, power, color)
-        self.weapon = None
-        self.potion = None
+        self.weapon: items.Weapon | None = None
+        self.potion: items.Potion | None = None
         self.inventory = Inventory()
 
     def attack(self, target):
@@ -154,7 +154,7 @@ class Player(Character):
             self.unequip(self.potion)
             self.potion = item
 
-    def unequip(self, item: object):
+    def unequip(self, item: items.Weapon | items.Potion) -> None:
         """ unequiping item and putting it back in inventory"""
         if item is self.weapon:
             self.weapon = None
@@ -165,8 +165,8 @@ class Player(Character):
         else:
             raise ValueError(f"Item {item!r} is not equipped.")
         print(f"{item.name} has been added back into the inventory")
-        
-    def pick_up(self, item):
+
+    def pick_up(self, item: items.Item) -> None:
         """Adds item into inventory"""
         self.inventory.add_item(item)
 

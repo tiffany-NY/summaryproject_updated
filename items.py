@@ -62,9 +62,9 @@ class Item:
         raise NotImplementedError("Subclasses must implement display_stats method.")
 
 
-class Weapon:
+class Weapon(Item):
     def __init__(self, name: str, damage: int, health: int):
-        self.name = name
+        super().__init__(name)
         self.damage = damage
         self.health = health
         self.use = 0
@@ -90,9 +90,9 @@ class Weapon:
             print(f"{self.name} --> Damage: + {self.damage} | Health: {self.health} |") 
 
 
-class Potion:
-    def __init__(self, name, health, max_health, default_power):
-        self.name = name
+class Potion(Item):
+    def __init__(self, name: str, health: str, max_health: str, default_power: str):
+        super().__init__(name)
         self.health = health
         self.max_health = max_health
         self.default_power = default_power
@@ -111,9 +111,9 @@ class Potion:
             print(f"{self.name} --> {self.default_power} default power")
 
 
-class Element:
+class Element(Item):
     def __init__(self, name: str):
-        self.name = name
+        super().__init__(name)
 
     def display_stats(self):
         """
