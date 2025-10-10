@@ -14,7 +14,7 @@ def create_room(name: str):
     if name not in location_data:
         raise ValueError(f"Room {name!r} does not exist.")
     data = location_data[name]
-    return Room(name,  data['enemy'], data['items'])
+    return Room(name, data['enemy'], data['items'])
 
 
 def unlock():
