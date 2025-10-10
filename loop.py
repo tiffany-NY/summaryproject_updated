@@ -1,7 +1,7 @@
 import os
 import random
 
-from battle_stuff at_each_place
+from battle_stuff import at_each_place
 
 from . import map, menu
 
