@@ -2,8 +2,30 @@ import data
 
 item_data = data.load_game_data()['items']
 
-weapon_list = item_data['weapons']
-potion_list = item_data['potions']
+weapon_data = item_data['weapons']
+potion_data = item_data['potions']
+element_data = item_data['elements']
+
+
+def create_weapon(name: str):
+    """ Creates a weapon object from the given name and data dictionary """
+    if name not in weapon_data:
+        raise ValueError(f"Weapon {name!r} does not exist.")
+    data = weapon_data[name]
+    return Weapon(name, data['damage'], data['health'])
+
+def create_potion(name: str):
+    """ Creates a potion object from the given name and data dictionary """
+    if name not in potion_data:
+        raise ValueError(f"Potion {name!r} does not exist.")
+    data = potion_data[name]
+    return Potion(name, data['health'], data['max_health'], data['default_power'])
+
+def create_element(name: str):
+    """ Creates an element object from the given name and data dictionary """
+    if name not in element_data:
+        raise ValueError(f"Element {name!r} does not exist.")
+    return Element(name)
 
 
 class Weapon:
@@ -50,6 +72,7 @@ class Potion:
             print(f"{self.name} --> {self.max_health} max health")
         else:
             print(f"{self.name} --> {self.default_power} default power")
+
 
 class Element:
     def __init__(self, element):

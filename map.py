@@ -4,16 +4,34 @@ from menu import menu
 
 
 location_data = data.load_game_data()['locations']
-map = data.load_map_data()
+map_data = data.load_map_data()
 
 details = location_data
+
+
+def create_room(name: str):
+    """ Creates a room object from the given name and data dictionary """
+    if name not in location_data:
+        raise ValueError(f"Room {name!r} does not exist.")
+    data = location_data[name]
+    return Room(name,  data['enemy'], data['items'])
 
 
 def unlock():
     if twilight.own_inventory.element_count >= 5:
         return True
     return False
-        
+
+
+class Room:
+    """ Represents a room in the game."""
+
+    def __init__(self, name: str, enemy: str, items: list[str]) -> None:
+        self.name = name
+        self.enemy = enemy
+        self.items = items
+
+
 class Map:
     def __init__(self, map, xcoord: int, ycoord: int) -> None:
         self.map = map
@@ -46,22 +64,22 @@ class Map:
         #control for movement
 
         if unlock() == False:
-            if self.current_location == map[3][0]:
+            if self.current_location == map_data[3][0]:
                 print("## You can't move north! its locked!!")
             else:
                 if self.ycoord > 0:
                     print('1 - North') #up
 
-            if self.current_location == map[1][0]:
+            if self.current_location == map_data[1][0]:
                 print("## You can't move south! its locked!!")
             else:
-                if self.ycoord < len(map) - 1:
+                if self.ycoord < len(map_data) - 1:
                     print('2 - South') #down
 
-            if self.xcoord < len(map[0]) - 1:
+            if self.xcoord < len(map_data[0]) - 1:
                 print('3 - East') #right
 
-            if self.current_location == map[2][1]:
+            if self.current_location == map_data[2][1]:
                 print("## You can't move west! its locked!!")
             else:
                 if self.xcoord > 0:
@@ -72,9 +90,9 @@ class Map:
         else:
             if self.ycoord > 0:
                 print('1 - North') #up
-            if self.ycoord < len(map) - 1:
+            if self.ycoord < len(map_data) - 1:
                 print('2 - South') #down
-            if self.xcoord < len(map[0]) - 1:
+            if self.xcoord < len(map_data[0]) - 1:
                 print('3 - East') #right
             if self.xcoord > 0 :
                 print('4 - West') #left
@@ -85,10 +103,10 @@ class Map:
             if self.ycoord > 0:
                 self.ycoord -= 1
         elif movement == 2:
-            if self.ycoord < len(map) - 1:
+            if self.ycoord < len(map_data) - 1:
                 self.ycoord += 1
         elif movement == 3:
-            if self.xcoord < len(map[0]) - 1:
+            if self.xcoord < len(map_data[0]) - 1:
                 self.xcoord += 1
         elif movement == 4:
             if self.xcoord > 0:
@@ -98,6 +116,6 @@ class Map:
         else:
             self.move_location()
             
-        self.current_location = map[self.ycoord][self.xcoord] 
+        self.current_location = map_data[self.ycoord][self.xcoord] 
 
-castle = Map(map, 0, 0)
+castle = Map(map_data, 0, 0)
