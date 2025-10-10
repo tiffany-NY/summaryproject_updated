@@ -76,6 +76,12 @@
       "item": ["element of kindness", "Mrs scowers all purpose maggi mee"]
     }
   },
+  "player": {
+    "name": "Twilight",
+    "health": 100,
+    "power": 5,
+    "color": "green"
+  },
   "monsters": {
     "Nightbearers Red": {"health": 50, "damage": 3},
     "Nightbearers Orange": {"health": 50, "damage": 3},

@@ -149,30 +149,31 @@ class Game:
         print(text.DIVIDER)
         self.player.display_stats()
         print(text.DIVIDER)
-        if not self.player.inventory.is_empty():
+        if self.player.inventory.is_empty():
+            return
+        self.player.display_inventory()
+        print(text.DIVIDER)
+        choice = text.prompt_inline_choice(
+            prompt="Would you like to equip a weapon or drink a potion before starting your battle?",
+            options=["yes", "no"],
+            prefix="> "
+        )
+        while choice != "cancel":
+            text.clear_screen()
             self.player.display_inventory()
             print(text.DIVIDER)
-            choice = text.prompt_inline_choice(
-                prompt="Would you like to equip a weapon or drink a potion before starting your battle?",
-                options=["yes", "no"],
-                prefix="> "
+            options = self.player.inventory.list_items()
+            options.append("cancel")
+            choice = text.prompt_numbered_choice(
+                preamble="What would you like to use?",
+                options=options,
             )
-            while choice != "cancel":
-                text.clear_screen()
-                self.player.display_inventory()
-                print(text.DIVIDER)
-                options = self.player.inventory.list_items()
-                options.append("cancel")
-                choice = text.prompt_numbered_choice(
-                    preamble="What would you like to use?",
-                    options=options,
-                )
-                if choice != 'cancel':
-                    self.player.use_item(choice)
-                text.clear_screen()
-                self.player.display_stats()
-                print(text.DIVIDER)
-            self.player.display_inventory()
+            if choice != 'cancel':
+                self.player.use_item(choice)
+            text.clear_screen()
+            self.player.display_stats()
+            print(text.DIVIDER)
+        self.player.display_inventory()
 
     def battle(self, enemy: Character) -> bool:
         """Displays and updates stats and health of Twilight before the battle starts and after each attack and 
