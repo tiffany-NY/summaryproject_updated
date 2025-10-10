@@ -1,0 +1,125 @@
+{
+  "locations": {
+    "Hallway": {
+      "name": "Hallway",
+      "enemy": "Nightbearers Red",
+      "item": ["sword", "Mrs scowers all purpose maggi mee"]
+    },
+    "Garden": {
+      "name": "Garden",
+      "enemy": "Nightbearers Orange",
+      "item": ["kaboom spell"]
+    },
+    "Drawing Room": {
+      "name": "Drawing Room",
+      "enemy": "Nightbearers Yellow",
+      "item": ["element of laughter", "Alicorn elixer"]
+    },
+    "Kitchen": {
+      "name": "Kitchen",
+      "enemy": "Nightbearers Green",
+      "item": ["Mrs scowers all purpose maggi mee"]
+    },
+    "Tea Room": {
+      "name": "Tea Room",
+      "enemy": "Nightbearers Blue",
+      "item": ["element of honesty"]
+    },
+    "Study": {
+      "name": "Study",
+      "enemy": "Nightbearers Indigo",
+      "item": ["Gigantamax powder"]
+    },
+    "Throne Room": {
+      "name": "Throne Room",
+      "enemy": "Nightmare Moon",
+      "item": ["element of magic"]
+    },
+    "Chambers": {
+      "name": "Chambers",
+      "enemy": "Nightbearers Purple",
+      "item": ["wobuffet wall", "Mrs scowers all purpose maggi mee"]
+    },
+    "Artillery": {
+      "name": "Artillery",
+      "enemy": "Nightbearers Pink",
+      "item": ["element of generosity"]
+    },
+    "Dungeon": {
+      "name": "Dungeon",
+      "enemy": "Nightbearers Black",
+      "item": ["Alicorn elixer"]
+    },
+    "Crown Room": {
+      "name": "Crown Room",
+      "enemy": "Nightbearers White",
+      "item": ["Boosting salve"]
+    },
+    "Ballroom": {
+      "name": "Ballroom",
+      "enemy": "Nightbearers Brown",
+      "item": ["Mrs scowers all purpose maggi mee"]
+    },
+    "Stables": {
+      "name": "Stables",
+      "enemy": "Nightbearers Magenta",
+      "item": ["pinkie spell"]
+    },
+    "Gallery": {
+      "name": "Gallery",
+      "enemy": "Nightbearers Grey",
+      "item": ["element of loyalty"]
+    },
+    "Library": {
+      "name": "Library",
+      "enemy": "Nightbearers Violently neon chartreuse",
+      "item": ["element of kindness", "Mrs scowers all purpose maggi mee"]
+    }
+  },
+  "player": {
+    "name": "Twilight",
+    "health": 100,
+    "power": 5,
+    "color": "green"
+  },
+  "monsters": {
+    "Nightbearers Red": {"health": 50, "damage": 3},
+    "Nightbearers Orange": {"health": 50, "damage": 3},
+    "Nightbearers Yellow": {"health": 100, "damage": 5},
+    "Nightbearers Green": {"health": 50, "damage": 3},
+    "Nightbearers Blue": {"health": 100, "damage": 5},
+    "Nightbearers Indigo": {"health": 50, "damage": 3},
+    "Nightmare Moon": {"health": 200, "damage": 20},
+    "Nightbearers Purple": {"health": 50, "damage": 5},
+    "Nightbearers Pink": {"health": 100, "damage": 7},
+    "Nightbearers Black": {"health": 50, "damage": 5},
+    "Nightbearers White": {"health": 50, "damage": 5},
+    "Nightbearers Brown": {"health": 50, "damage": 7},
+    "Nightbearers Magenta": {"health": 50, "damage": 3},
+    "Nightbearers Grey": {"health": 100, "damage": 7},
+    "Nightbearers Violently neon chartreuse": {"health": 100, "damage": 7}
+  },
+  "items": {
+    "weapons": {
+      "sword": {"damage": 10, "health": 0},
+      "kaboom spell": {"damage": 10, "health": -5},
+      "pinkie spell": {"damage": 20, "health": -5},
+      "wobuffet wall": {"damage": 0, "health": 0}
+    },
+    "potions": {
+      "Mrs scowers all purpose maggi mee": {"health": "x2", "max_health": "0", "default_power": "0", "chance": 50},
+      "Wiggenweld juice": {"health": "+10", "max_health": "0", "default_power": "0", "chance": 50},
+      "Alicorn elixer": {"health": "+20", "max_health": "+10", "default_power": "+10", "chance": 10},
+      "Boosting salve": {"health": "0", "max_health": "x2", "default_power": "0", "chance": 30},
+      "Gigantamax powder": {"health": "0", "max_health": "0", "default_power": "x2", "chance": 20}
+    },
+    "elements": {
+      "element of laughter": {},
+      "element of honesty": {},
+      "element of magic": {},
+      "element of generosity": {},
+      "element of loyalty": {},
+      "element of kindness": {}
+    }
+  }
+}

@@ -1,110 +1,84 @@
-from items import Element
+import items
 
-class Node:
-    def __init__(self, item):
-        self.item = item
-        self.next = None
 
 class Inventory:
     def __init__(self):
-        self.head = None  # Start of the linked list
-        self.count = 0
-        self.element_count = 0
+        self.items = {}  # Dictionary to store items with name as key and item as value
+        self.item_counts = {}  # Dictionary to track the count of each item type
 
-    def add_item(self, item):
+    def add_item(self, item: items.Item) -> None:
         """
         Adds item to inventory and updates count.
         If inventory is full, prompts user to drop an item and only adds item if dropped successfully.
         """
-        new_node = Node(item)
-        if self.count >= 15:
-            self.show_inventory()
-            choice = input('> Your inventory is full. Would you like to remove some items? (yes/no) ')
-            choice.lower()
-            if choice == 'no':
-                return
-            elif choice == 'yes':
-                removal = input("> What would you like to remove? ")
-                if not self.drop_item(removal):
-                    print(f"{item.name} was not added.")
-                    return
-            else:
-                print('Please enter a valid function.')
-                return self.add_item(item)
-        if self.head is None:
-            self.head = new_node
+        if self.is_full():
+            raise ValueError("Inventory is full.")
+        if item.name in self.items:
+            self.item_counts[item.name] += 1
         else:
-            current = self.head
-            while current.next:  # Go to the end
-                current = current.next
-            current.next = new_node
-        self.count += 1
-        if isinstance(item, Element):
+            self.items[item.name] = item
+            self.item_counts[item.name] = 1
+
+        if isinstance(item, items.Element):
             self.element_count += 1
         print(f"{item.name} added to inventory.")
 
-    def drop_item(self, item):
-        """
-        Attempt to drop item from the inventory.
-        If not found, continously prompts user to retry or cancel.
-        Returns True if an item was dropped, False if cancelled
-        """
-        while True:
-            current = self.head
-            prev = None
-            while current:
-                if current.item.name == item:
-                    if prev:
-                        prev.next = current.next
-                    else:
-                        self.head = current.next
-                    self.count -= 1
-                    print(f"{item} dropped from inventory.")
-                    return True
-                prev = current
-                current = current.next
+    def count_elements(self) -> int:
+        """ Returns the total number of elements in the inventory """
+        return sum(
+            1 for item in self.items.values()
+            if isinstance(item, items.Element)
+        )
 
-            print(f"{item.name} not found in inventory.")
-            choice = input("> Try again? Enter a new item name or type 'cancel' to exit: ").strip()
-            if choice.lower() == 'cancel':
-                print("Drop operation cancelled.")
-                return False
-            item = choice
+    def count_items(self) -> int:
+        """ Returns the total number of items in the inventory """
+        return sum(self.item_counts.values())
+
+    def drop_item(self, item_name: str) -> None:
+        """Drop item from the inventory."""
+        if not self.has_item(item_name):
+            raise ValueError(f"Item {item_name!r} not found in inventory.")
+        self.item_counts[item_name] -= 1
+        if self.item_counts[item_name] == 0:
+            del self.items[item_name]
+            del self.item_counts[item_name]
+
+    def has_item(self, item_name: str) -> bool:
+        """ Check if the inventory contains a specific item """
+        return item_name in self.items
     
-    def use_item(self, indexs):
-        """
-        Equips item from the inventory.
+    def is_empty(self) -> bool:
+        """ Check if the inventory is empty """
+        return bool(self.items)
+    
+    def is_full(self) -> bool:
+        """ Check if the inventory is full """
+        return self.count_items() >= 15
+
+    def list_items(self) -> list:
+        """ Returns a list of items in the inventory """
+        return list(self.items.values())
+
+    def use_item(self, item_name: str) -> items.Item:
+        """Equips item from the inventory.
         If not found, continuously prompt the user to retry or cancel.
         Returns the equipped item if successful, None if cancelled.
         """
-        current = self.head
-        prev = None
-        i = 0
-        while current:
-            if i == indexs:
-                if prev:
-                    prev.next = current.next
-                else:
-                    self.head = current.next
-                self.count -= 1
-                return current.item
-            prev = current
-            current = current.next
-            i += 1
-        return None
+        if not self.has_item(item_name):
+            raise ValueError(f"Item {item_name!r} not found in inventory.")
+        self.item_counts[item_name] -= 1
+        if self.item_counts[item_name] == 0:
+            return self.items.pop(item_name)
+        return self.items[item_name]
 
-    def show_inventory(self):
+    def show_inventory(self) -> None:
         """
-        display all the items in the inventory
+        Display all the items in the inventory
         """
-        current = self.head
-        index = 1
-        if not current:
+        if self.is_empty():
             print("Inventory is empty.")
             return
-        print(f'You have {self.count}/15 items in the inventory')
+        print(f'You have {self.count_items()}/15 items in the inventory')
         print("Inventory:")
-        while current:
-            print(f"{index}: {current.item.name}")
-            current = current.next
-            index += 1
+        for name, count in self.item_counts.items():
+            print(f"{name}: {count}")
