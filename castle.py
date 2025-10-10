@@ -218,35 +218,19 @@ class Game:
             return
         text.prompt_loot(enemy.name)
         for item_name in current_room.items:
-            if items.is_weapon(item_name):
-                item = items.create_weapon(item_name)
-                print(text.DIVIDER)
-                item.display_weapon_stats()
-                choice = text.prompt_inline_choice(
-                    prompt="do u wanna pick up the weapon?",
-                    options=["yes", "no"],
-                    prefix="> "
-                )
-            elif items.is_potion(item_name):
-                item = items.create_potion(item_name)
-                print(text.DIVIDER)
-                item.display_potion_stats()
-                choice = text.prompt_inline_choice(
-                    prompt="do u wanna pick up the potion?",
-                    options=["yes", "no"],
-                    prefix="> "
-                )
-            elif items.is_element(item_name):
-                item = items.create_element(item_name)
-                print(text.DIVIDER)
+            item = items.create_item(item_name)
+            print(text.DIVIDER)
+            item.display_stats()
+            item_type = type(item).__name__.lower()
+            item_prompt = f"do u wanna pick up the {item_type}?"
+            if isinstance(item, items.Element):
                 print(text.alert_element_found(item.name))
-                choice = text.prompt_inline_choice(
-                    prompt="do u wanna pick up the element? (hint: u need it to win!!!!)",
-                    options=["yes", "no"],
-                    prefix="> "
-                )
-            else:
-                raise ValueError(f"Item {item_name!r} is not recognized.")
+                item_prompt += " (hint: u need it to win!!!!)"
+            choice = text.prompt_inline_choice(
+                prompt=item_prompt,
+                options=["yes", "no"],
+                prefix="> "
+            )
             if choice == "yes":
                 self.player.pick_up(item)
 

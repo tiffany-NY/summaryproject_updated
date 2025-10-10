@@ -1,5 +1,6 @@
 from items import Weapon, Potion
 from inventory import Inventory
+import items
 from health_bar import HealthBar
 import data
 import text
@@ -97,17 +98,17 @@ class Player(Character):
         """ disply all of character stats, including weapon if equipped """
         if self.weapon != None:
             print(f"|| {self.name} || Power: {self.power} | Equipped: {self.weapon.name} |")
-            self.weapon.display_weapon_stats()
+            self.weapon.display_stats()
         else:
             super().display_stats()
 
     def use_item(self, item_name: str) -> None:
         """Applies an item chosen from the inventory."""
         item = self.inventory.use_item(item_name)
-        if isinstance(item, Weapon):
-            self.equip(item.name)
-        elif isinstance(item, Potion):
-            self.equip(item.name)
+        if isinstance(item, items.Element):
+            print("Cannot use element.")
+        self.equip(item.name)
+        if isinstance(item, items.Potion):
             self.use_potion()
 
     def use_potion(self) -> None:

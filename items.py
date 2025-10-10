@@ -7,6 +7,17 @@ potion_data = item_data['potions']
 element_data = item_data['elements']
 
 
+def create_item(name: str):
+    """ Creates an item object from the given name and data dictionary """
+    if name in weapon_data:
+        return create_weapon(name)
+    elif name in potion_data:
+        return create_potion(name)
+    elif name in element_data:
+        return create_element(name)
+    else:
+        raise ValueError(f"Item {name!r} does not exist.")
+
 def create_weapon(name: str):
     """ Creates a weapon object from the given name and data dictionary """
     if name not in weapon_data:
@@ -27,6 +38,18 @@ def create_element(name: str):
         raise ValueError(f"Element {name!r} does not exist.")
     return Element(name)
 
+def is_weapon(name: str) -> bool:
+    """ Check if the item is a weapon """
+    return name in weapon_data
+
+def is_potion(name: str) -> bool:
+    """ Check if the item is a potion """
+    return name in potion_data
+
+def is_element(name: str) -> bool:
+    """ Check if the item is an element """
+    return name in element_data
+
 
 class Weapon:
     def __init__(self, name: str, damage: int, health: int):
@@ -34,12 +57,15 @@ class Weapon:
         self.damage = damage
         self.health = health
         self.use = 0
+
+    def __str__(self) -> str:
+        return self.name
     
     def wobuffet_use(self):
         """ returns the number of times wobuffet wall has been used"""
         self.use += 1
 
-    def display_weapon_stats(self):
+    def display_stats(self):
         """
         disply all the stats of the weapons
         """
@@ -60,7 +86,7 @@ class Potion:
         self.max_health = max_health
         self.default_power = default_power
 
-    def display_potion_stats(self):
+    def display_stats(self):
         """
         disply all the stats of the potions
         """
@@ -75,5 +101,11 @@ class Potion:
 
 
 class Element:
-    def __init__(self, element):
-        self.name = element
+    def __init__(self, name: str):
+        self.name = name
+
+    def display_stats(self):
+        """
+        Displays the stats of the element.
+        """
+        print(f"{self.name} --> Element")
