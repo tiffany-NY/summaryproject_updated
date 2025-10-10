@@ -42,48 +42,52 @@ def show_intro():
     """
     introduction of game
     """
-    print(text.DIVIDER)
-    print("\t𐙚⋆˚✿˖° Castle of the Two Sisters 𐙚⋆˚✿˖°")
-    print(text.DIVIDER)
-    print(text.BACKSTORY)
-    print(text.DIVIDER)
-    input("> click enter to move on ")
+    text.print_lines(
+        text.DIVIDER,
+        text.GAME_TITLE,
+        text.DIVIDER,
+        text.BACKSTORY,
+        text.DIVIDER,
+        continue_prompt="> click enter to move on "
+    )
 
 
 def main_menu_prompt():
     """
     the menu panel in which player can choose to create a new game, load previous game, read th rules or quit the game
     """
-    flag = True
-    while flag:
-        clear_screen()
-        print("1: New Game")
-        print("2: Load Previous Game")
-        print("3: Rules")
-        print("4: Quit")
-        choice = input("> ")
-        
-        if choice == "1":
-            clear_screen()
+    while True:
+        text.clear_screen()
+        choice = text.prompt_numbered_choice(
+            preamble="",
+            options=[
+                "New Game",
+                "Load Previous Game",
+                "Rules",
+                "Quit"
+            ],
+            prompt="> "
+        )        
+        if choice == "New Game":
+            text.clear_screen()
             name = input("> what's your name: ")
             print(f"Welcome, {name}!")
-            flag = False
-            return True
-        
-        elif choice == "2":
+            return
+
+        elif choice == "Load Previous Game":
             if load_game():
-                clear_screen()
+                text.clear_screen()
                 print(f"Welcome back, {name}!!")
-                flag = False
-                return True
+                return
             else:
                 input("> click enter to return to menu...")
 
-        elif choice == "3":
-            clear_screen()
+        elif choice == "Rules":
+            text.clear_screen()
             print(text.RULES)
-            input("\n> click enter to return to menu...")
-            flag = False
+            text.linebreak()
+            input("> click enter to return to menu...")
+            return
 
-        elif choice == "4":
+        elif choice == "Quit":
             quit()

@@ -1,9 +1,6 @@
-import os
-import random
-
 from battle_stuff import at_each_place
 
-from . import map, menu
+from . import map, menu, text
 
 run = True
 
@@ -19,7 +16,7 @@ while run:
     while play:
         menu.save_game()
         input("> click enter to move on ")
-        menu.clear_screen()
+        text.clear_screen()
         at_each_place()
         map.castle.move_location()
         map.castle.show_current_location()
