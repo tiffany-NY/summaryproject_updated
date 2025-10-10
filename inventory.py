@@ -6,7 +6,7 @@ class Inventory:
         self.items = {}  # Dictionary to store items with name as key and item as value
         self.item_counts = {}  # Dictionary to track the count of each item type
 
-    def add_item(self, item: object) -> None:
+    def add_item(self, item: items.Item) -> None:
         """
         Adds item to inventory and updates count.
         If inventory is full, prompts user to drop an item and only adds item if dropped successfully.
@@ -59,7 +59,7 @@ class Inventory:
         """ Returns a list of items in the inventory """
         return list(self.items.values())
 
-    def use_item(self, item_name: str) -> object:
+    def use_item(self, item_name: str) -> items.Item:
         """Equips item from the inventory.
         If not found, continuously prompt the user to retry or cancel.
         Returns the equipped item if successful, None if cancelled.

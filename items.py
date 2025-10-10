@@ -51,6 +51,17 @@ def is_element(name: str) -> bool:
     return name in element_data
 
 
+class Item:
+    def __init__(self, name: str):
+        self.name = name
+
+    def display_stats(self):
+        """
+        Displays the stats of the item.
+        """
+        raise NotImplementedError("Subclasses must implement display_stats method.")
+
+
 class Weapon:
     def __init__(self, name: str, damage: int, health: int):
         self.name = name
