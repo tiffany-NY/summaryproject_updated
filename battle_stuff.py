@@ -83,7 +83,7 @@ def continueing(enemy):
                 try:
                     weapon = items.create_weapon(item_name)
                     print(text.DIVIDER)
-                    print(weapon.display_weapon_stats())
+                    weapon.display_weapon_stats()
                     option = input("> do u wanna pick up the weapon? (yes/no) ")
                     if option == "yes":
                         twilight.pick_up(weapon)
@@ -91,7 +91,7 @@ def continueing(enemy):
                     try:
                         potion = items.create_potion(item_name)
                         print(text.DIVIDER)
-                        print(potion.display_potion_stats())
+                        potion.display_potion_stats()
                         option = input("> do u wanna pick up the potion? (yes/no) ")
                         if option == "yes":
                             twilight.pick_up(potion)
