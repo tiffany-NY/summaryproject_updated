@@ -1,6 +1,7 @@
 from character import Character, Player, twilight
 import data
 from menu import main_menu_prompt
+import text
 
 
 location_data = data.load_game_data()['locations']
@@ -59,7 +60,7 @@ class Map:
         """
         Updates the coordiates of the player, locks throne room until unlocked
         """
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+        print(text.DIVIDER)
         self.show_current_location()
         #control for movement
 

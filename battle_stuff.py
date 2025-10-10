@@ -2,7 +2,7 @@ from character import Character, twilight
 import items
 import map
 import menu
-import desc
+import text
 
 
 def before_battle():
@@ -10,28 +10,28 @@ def before_battle():
     Displays the stats and inventory of Twilight and
     Prompts user to equip weapons or drink potions
     """
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
     twilight.display_stats()
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
     if twilight.inventory.count > 0:
         twilight.display_inventory()
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+        print(text.DIVIDER)
         choices = input("> would you like to equip a weapon or drink a potion before starting your battle? (yes/no) ")
         menu.clear_screen()
         while choices == "yes":
             menu.clear_screen()
             twilight.display_inventory()
-            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+            print(text.DIVIDER)
             thing = input("> what would you like to use? or type 'cancel' to exit: ") 
             if thing == 'cancel':
                 print('Equip operation cancelled.')
-                print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+                print(text.DIVIDER)
                 choices = -1
             else:
                 twilight.use_item(int(thing)-1)
             menu.clear_screen()
             twilight.display_stats()
-            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+            print(text.DIVIDER)
         twilight.display_inventory()
 
 
@@ -41,17 +41,17 @@ def battle(enemy):
     Prompts user to attack
     """
     menu.clear_screen()
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
     twilight.display_stats()
     enemy.display_stats()
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
     twilight.attack(enemy)
     enemy.attack(twilight)
 
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
     twilight.health_bar.draw()
     enemy.health_bar.draw()
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
 
     if twilight.is_alive() and enemy.alive():
         input("> click enter to attack ")
@@ -75,14 +75,14 @@ def continueing(enemy):
     if twilight.is_alive():
         current = map.castle.current_location
         if None not in list(map.details[current]["item"]):
-            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+            print(text.DIVIDER)
             print(f"oh look! {enemy.name} dropped an item!")
             input("> click enter to see what it is! ")
 
             for item_name in map.details[current]["item"]:
                 try:
                     weapon = items.create_weapon(item_name)
-                    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+                    print(text.DIVIDER)
                     print(weapon.display_weapon_stats())
                     option = input("> do u wanna pick up the weapon? (yes/no) ")
                     if option == "yes":
@@ -90,14 +90,14 @@ def continueing(enemy):
                 except ValueError:
                     try:
                         potion = items.create_potion(item_name)
-                        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+                        print(text.DIVIDER)
                         print(potion.display_potion_stats())
                         option = input("> do u wanna pick up the potion? (yes/no) ")
                         if option == "yes":
                             twilight.pick_up(potion)
                     except ValueError:
                         element = items.create_element(item_name)
-                        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+                        print(text.DIVIDER)
                         print(f"congratulations! u found the {element.name}")
                         option = input("> do u wanna pick up the element? (hint: u need it to win!!!!) (yes/no) ")
                         if option == "yes":
@@ -105,10 +105,10 @@ def continueing(enemy):
                             map.details[current]["item"].remove(item_name)
                             game_over()
 
-            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+            print(text.DIVIDER)
             twilight.unequip(twilight.weapon)
             twilight.display_inventory()
-            print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+            print(text.DIVIDER)
         else:
             print(f"awh man {enemy.name} did not drop anything :(")
 
@@ -143,6 +143,6 @@ def at_each_place():
 def game_over():
     """checks if all elements have been collected, if all 6 collected, game is won and over"""
     if twilight.inventory.element_count == 6:
-        print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-        print(desc.winner)
+        print(text.DIVIDER)
+        print(text.VICTORY)
         quit()

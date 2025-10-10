@@ -1,5 +1,6 @@
 import os
-from desc import backstory, rules, item_info
+
+import text
 
 HP = 100
 power = 5
@@ -41,11 +42,11 @@ def show_intro():
     """
     introduction of game
     """
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
     print("\t𐙚⋆˚✿˖° Castle of the Two Sisters 𐙚⋆˚✿˖°")
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-    print(backstory)
-    print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
+    print(text.DIVIDER)
+    print(text.BACKSTORY)
+    print(text.DIVIDER)
     input("> click enter to move on ")
 
 
@@ -80,7 +81,7 @@ def main_menu_prompt():
 
         elif choice == "3":
             clear_screen()
-            print(rules)
+            print(text.RULES)
             input("\n> click enter to return to menu...")
             flag = False
 

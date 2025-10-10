@@ -1,4 +1,4 @@
-backstory = """
+BACKSTORY = """
 Awaken, O wanderer, to the words etched in the stones of time.
 When the world of Equestria lies fractured, and harmony is but a fading memory, the shadow of Nightmare Moon shall descend upon all.
 Once she was Princess Luna, guardian of dreams, but envy and sorrow twisted her into darkness unending.
@@ -11,7 +11,7 @@ Know this, chosen one: Only by uniting the six Elements of Harmony—Loyalty, Ho
 Should you falter, the Elements shall fall from your grasp, and if Nightmare Moon seizes them all, eternal night shall claim Equestria.
 """
 
-rules = """
+RULES = """
 Your path begins in the vast castle, within lies the Garden, Kitchen, Tea Room, Drawing Room, Study, Chambers, Artillery, Crown Room, and Dungeon.
 At the end, the Throne Room, where Nightmare Moon herself awaits.
 Each chamber holds secrets and dangers so tread carefully, for every step binds your destiny.
@@ -26,7 +26,7 @@ Your choices in combat are these:
 Remember: every choice carves the story of your soul.
 """
 
-item_info = """
+ITEM_INFO = """
 Potions & Elixirs
 * Mrs Scower’s All-Purpose Maggi Mee More: Restores ×2 health.
 * Wiggenweld Elixir: +10 health.
@@ -50,9 +50,11 @@ So it is written. So it awaits.
 Step forth, brave warrior, for the Castle of the Two Sisters opens only to those who dare to claim their fate.
 """
 
-winner = """
+VICTORY = """
 Congratulations!!! You have collected all the elements of harmony yippee!!!
 With all the elements, you restored the magic of friendship in Equastria and purified Nightmare Moon back to Princess Luna!
 And with that your mission has ended and Equastria is safe! till next time!
 THANKS FOR PLAYING!!!
 """
+
+DIVIDER = "𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°"
