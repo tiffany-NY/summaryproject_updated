@@ -1,95 +1,13 @@
-from menu import menu
 from character import Character, Higherup, twilight
+import data
+from menu import menu
 
-        #x = 0    #x = 1   #x = 2
-map = [['Hallway', 'Garden', 'Drawing Room'], #y = 0
-        ['Kitchen','Tea Room', 'Study'],  #y = 1
-        ['Throne Room', 'Chambers', 'Artillery'], #y = 2
-        ['Dungeon', 'Crown Room', 'Ballroom'], #y = 3
-        ['Stables', 'Gallery', 'Library']] #y = 4
 
-details = {
-    'Hallway': {
-        'name': 'Hallway',
-        'enemy': ['Nightbearers Red', 50, 3],
-        'item': {'weapon': {"name": "sword", "damage": 10, "health": 0},
-                 'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}
-        }
-    },
-    'Garden': {
-        'name': 'Garden',
-        'enemy': ['Nightbearers Orange', 50, 3],
-        'item': {'weapon': {"name": "kaboom spell", "damage": 10, "health": -5}}
-    },
-    'Drawing Room': {
-        'name': 'Drawing Room',
-        'enemy': ['Nightbearers Yellow', 100, 5],
-        'item': {'elements': "element of laughter",
-                'potion': {"name": "Alicorn elixer", "health": "+30", "max_health": "+20", "default_power": "+10"}}
-    },
-    'Kitchen': {
-        'name': 'Kitchen',
-        'enemy': ['Nightbearers Green', 50, 3],
-        'item': {'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
-    },
-    'Tea Room': {
-        'name': 'Tea Room',
-        'enemy': ['Nightbearers Blue', 100, 5],
-        'item': {'elements': "element of honesty"}
-    },
-    'Study': {
-        'name': 'Study',
-        'enemy': ['Nightbearers Indigo', 50, 3],
-        'item': {'potion': {"name": "Gigantamax powder", "health": "0", "max_health": "0", "default_power": "x2"}}
-    },
-    'Throne Room': {
-        'name': 'Throne Room',
-        'enemy': ['Nightmare Moon', 200, 20],
-        'item': {'elements': "element of magic"}
-    },
-    'Chambers': {
-        'name': 'Chambers',
-        'enemy': ['Nightbearers Purple', 50, 5],
-        'item': {'weapon': {"name": "wobuffet wall", "damage": 0, "health": 0},
-        'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
-    },
-    'Artillery': {
-        'name': 'Artillery',
-        'enemy': ['Nightbearers Pink', 100, 7],
-        'item': {'elements': "element of generosity"}
-    },
-    'Dungeon': {
-        'name': 'Dungeon',
-        'enemy': ['Nightbearers Black', 50, 5],
-        'item': {'potion': {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10"}}
-    },
-    'Crown Room': {
-        'name': 'Crown Room',
-        'enemy': ['Nightbearers White', 50, 5],
-        'item': {'potion': {"name": "Boosting salve", "health": "0", "max_health": "x2", "default_power": "0"}}
-    },
-    'Ballroom': {
-        'name': 'Ballroom',
-        'enemy': ['Nightbearers Brown', 50, 7],
-        'item': {'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
-    },
-    'Stables': {
-        'name': 'Stables',
-        'enemy': ['Nightbearers Magenta', 50, 3],
-        'item': {'weapon': {"name": "pinkie spell", "damage": 20, "health":-5}}
-    },
-    'Gallery': {
-        'name': 'Gallery',
-        'enemy': ['Nightbearers Grey', 100, 7],
-        'item': {'elements': "element of loyalty"}
-    },
-    'Library': {
-        'name': 'Library',
-        'enemy': ['Nightbearers Violently neon chartreuse', 100, 7],
-        'item': {'elements': "element of kindness",
-        'potion': {"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0"}}
-    }
-}
+location_data = data.load_game_data()['locations']
+map = data.load_map_data()
+
+details = location_data
+
 
 def unlock():
     if twilight.own_inventory.element_count >= 5:
@@ -107,14 +25,17 @@ class Map:
         """
         Displays the name of the room Twilight is currently in
         """
-        print(f'Your current location is {self.current_location}.')
+        location_message = f'Your current location is {self.current_location}.'
+        print(location_message)
+        return location_message
 
     def display_map(self) -> str:
         """
         Displays the map
         """
-        for row in self.map:
-            print(row)
+        map_representation = '\n'.join([' '.join(row) for row in self.map])
+        print(map_representation)
+        return map_representation
 
     def move_location(self) -> None:
         """

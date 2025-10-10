@@ -1,8 +1,10 @@
-weapon_list = [{"name": "sword", "damage": 10, "health": 0},
-            {"name": "kaboom spell", "damage": 10, "health": -5},
-            {"name": "pinkie spell", "damage": 20, "health":-5},
-            {"name": "wobuffet wall", "damage": 0, "health": 0}
-]
+import data
+
+item_data = data.load_game_data()['items']
+
+weapon_list = item_data['weapons']
+potion_list = item_data['potions']
+
 
 class Weapon:
     def __init__(self, name: str, damage: int, health: int):
@@ -28,13 +30,6 @@ class Weapon:
         else:
             print(f"{self.name} --> Damage: + {self.damage} | Health: {self.health} |") 
 
-
-potion_list = [{"name": "Mrs scowers all purpose maggi mee", "health": "x2", "max_health": "0", "default_power": "0", "chance": 50},
-            {"name": "Wiggenweld juice", "health": "+10", "max_health": "0", "default_power": "0", "chance": 50},
-            {"name": "Alicorn elixer", "health": "+20", "max_health": "+10", "default_power": "+10", "chance": 10},
-            {"name": "Boosting salve", "health": "0", "max_health": "x2", "default_power": "0", "chance": 30},
-            {"name": "Gigantamax powder", "health": "0", "max_health": "0", "default_power": "x2", "chance": 20}
-]
 
 class Potion:
     def __init__(self, name, health, max_health, default_power):
