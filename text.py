@@ -83,7 +83,6 @@ def linebreak():
 
 def print_lines(
         *lines: str,
-        *,
         continue_prompt: str | None = None,
 ) -> None:
     """Prints each line in the given list of lines.
@@ -102,10 +101,19 @@ def alert_element_found(element: str) -> None:
     print(f"congratulations! u found the {element}")
 
 
+def alert_enemy(enemy: str) -> None:
+    """Alerts user that they have encountered an enemy."""
+    print(f"oh no {enemy} has appeared")
+
+
+def alert_no_loot(enemy: str) -> None:
+    """Alerts user that the enemy has no loot."""
+    print(f"awh man {enemy} did not drop anything :(")
+
 def prompt_loot(enemy: str) -> None:
     """Prompts user to press a key to pick up an enemy's dropped item."""
     print(DIVIDER)
-    print(f"oh look! {enemy} dropped an item!")
+    print(f"oh look! {enemy} dropped something!")
     input("> click enter to see what it is! ")
 
 

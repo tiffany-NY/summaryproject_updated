@@ -1,6 +1,34 @@
 from items import Weapon, Potion
 from inventory import Inventory
 from health_bar import HealthBar
+import data
+import text
+
+monster_data = data.load_game_data()['monsters']
+player_data = data.load_game_data()['player']
+
+
+def create_enemy(name: str) -> "Character":
+    """Creates an enemy character from the monster data."""
+    if name not in monster_data:
+        raise ValueError(f"Monster {name!r} does not exist.")
+    data = monster_data[name]
+    return Character(
+        name,
+        data['health'],
+        data['damage'],
+        color="red"
+    )
+
+def create_player() -> "Player":
+    """Creates the player character from the player data."""
+    return Player(
+        player_data['name'],
+        player_data['health'],
+        player_data['power'],
+        player_data['color']
+    )
+
 
 class Character:
     """ Represents a character in the game."""
@@ -73,8 +101,19 @@ class Player(Character):
         else:
             super().display_stats()
 
-    def use_potion(self, potion):
+    def use_item(self, item_name: str) -> None:
+        """Applies an item chosen from the inventory."""
+        item = self.inventory.use_item(item_name)
+        if isinstance(item, Weapon):
+            self.equip(item.name)
+        elif isinstance(item, Potion):
+            self.equip(item.name)
+            self.use_potion()
+
+    def use_potion(self) -> None:
         """Changes the corressponding stats according to potion description"""
+        if self.potion is None:
+            return
         if self.potion.health[0] == "+":
             self.health = min(self.health + int(self.potion.health[1:]), self.health_max)
         elif self.potion.health[0] == "x":
@@ -90,33 +129,41 @@ class Player(Character):
         elif self.potion.default_power[0] == "x":
             self.power *= int(self.potion.default_power[1:])
 
-    def use_item(self, index):
-        """uses item"""
-        holder = self.inventory.use_item(index)
-        if isinstance(holder, Weapon):
-            if self.weapon != None:
-                place = self.weapon
-                change = input("> you already equipped a weapon. Are you sure you want to change? you can only equip one (yes/no): ")
-                if change == "yes":
-                    self.unequip(place)
-                    self.weapon = holder
-                elif change == "no":
-                    self.unequip(holder)
-                    self.weapon = place
-            else:
-                self.weapon = holder
-        if isinstance(holder, Potion):
-            self.potion = holder
-            self.use_potion(holder)
-
-    def unequip(self, item):
-        """ unequiping item and putting it back in inventory"""
+    def equip(self, item_name: str):
+        """equipping item and removing it from inventory"""
+        if not self.inventory.has_item(item_name):
+            raise ValueError(f"Item {item_name!r} not found in inventory.")
+        item = self.inventory.use_item(item_name)
         if isinstance(item, Weapon):
+            if self.weapon is None:
+                self.weapon = item
+                print(f"{item.name} has been equipped")
+                return
+            choice = text.prompt_inline_choice(
+                prompt="you already equipped a weapon. Are you sure you want to change? you can only equip one",
+                options=["yes", "no"]
+            )
+            if choice == "yes":
+                self.unequip(self.weapon)
+                self.weapon = item
+                print(f"{item.name} has been equipped")
+            elif choice == "no":
+                self.inventory.add_item(item)
+        elif isinstance(item, Potion):
+            self.unequip(self.potion)
+            self.potion = item
+
+    def unequip(self, item: object):
+        """ unequiping item and putting it back in inventory"""
+        if item is self.weapon:
             self.weapon = None
             self.inventory.add_item(item)
-            print(f"{item.name} has been added back into the inventory")
+        elif item is self.potion:
+            self.potion = None
+            self.inventory.add_item(item)
         else:
-            return
+            raise ValueError(f"Item {item!r} is not equipped.")
+        print(f"{item.name} has been added back into the inventory")
         
     def pick_up(self, item):
         """Adds item into inventory"""
@@ -127,5 +174,3 @@ class Player(Character):
         displays the inventory
         """
         self.inventory.show_inventory()
-
-twilight = Player(name="Twilight", health=100, power=5, color="green")

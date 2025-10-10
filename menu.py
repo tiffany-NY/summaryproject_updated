@@ -52,7 +52,7 @@ def show_intro():
     )
 
 
-def main_menu_prompt():
+def main_menu_prompt() -> None:
     """
     the menu panel in which player can choose to create a new game, load previous game, read th rules or quit the game
     """
