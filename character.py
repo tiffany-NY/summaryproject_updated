@@ -3,6 +3,8 @@ from inventory import Inventory
 from health_bar import HealthBar
 
 class Character:
+    """ Represents a character in the game."""
+
     def __init__(self, name: str, health: int, power: int, color):
         self.name = name
         self.health = health
@@ -10,7 +12,7 @@ class Character:
         self.power = power
         self.health_bar = HealthBar(self, color=color)
 
-    def alive(self):
+    def is_alive(self):
         """Returns True if character is alive"""
         return self.health > 0
 
@@ -37,12 +39,14 @@ class Character:
         print(f"|| {self.name} || Power: {self.power} |")
 
 
-class Higherup(Character):
+class Player(Character):
+    """A character with an inventory, and can equip a weapon and potion."""
+
     def __init__(self, name: str, health: int, power: int, color):
         super().__init__(name, health, power, color)
         self.weapon = None
         self.potion = None
-        self.own_inventory = Inventory()
+        self.inventory = Inventory()
 
     def attack(self, target):
         """Reduces target health when attacking, total damage is default power and weapon if equipped"""
@@ -86,18 +90,18 @@ class Higherup(Character):
         elif self.potion.default_power[0] == "x":
             self.power *= int(self.potion.default_power[1:])
 
-    def using_item(self, index):
+    def use_item(self, index):
         """uses item"""
-        holder = self.own_inventory.use_item(index)
+        holder = self.inventory.use_item(index)
         if isinstance(holder, Weapon):
             if self.weapon != None:
                 place = self.weapon
                 change = input("> you already equipped a weapon. Are you sure you want to change? you can only equip one (yes/no): ")
                 if change == "yes":
-                    self.putting_back(place)
+                    self.unequip(place)
                     self.weapon = holder
                 elif change == "no":
-                    self.putting_back(holder)
+                    self.unequip(holder)
                     self.weapon = place
             else:
                 self.weapon = holder
@@ -105,23 +109,23 @@ class Higherup(Character):
             self.potion = holder
             self.use_potion(holder)
 
-    def putting_back(self, item):
+    def unequip(self, item):
         """ unequiping item and putting it back in inventory"""
         if isinstance(item, Weapon):
             self.weapon = None
-            self.own_inventory.add_item(item)
+            self.inventory.add_item(item)
             print(f"{item.name} has been added back into the inventory")
         else:
             return
         
     def pick_up(self, item):
         """Adds item into inventory"""
-        self.own_inventory.add_item(item)
+        self.inventory.add_item(item)
 
     def display_inventory(self):
         """
         displays the inventory
         """
-        self.own_inventory.show_inventory()
+        self.inventory.show_inventory()
 
-twilight = Higherup(name="Twilight", health=100, power=5, color="green")
+twilight = Player(name="Twilight", health=100, power=5, color="green")

@@ -5,10 +5,10 @@ HP = 100
 power = 5
 name = ""
 
-def clear():
+def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
-def save():
+def save_game():
     """
     saves the file in the txt
     """
@@ -18,7 +18,7 @@ def save():
     except Exception as e:
         print(f"Error saving game: {e}")
 
-def load():
+def load_game():
     """
     load the game data from the txt
     """
@@ -37,7 +37,7 @@ def load():
         print(f"Error loading game: {e}")
         return False
 
-def start():
+def show_intro():
     """
     introduction of game
     """
@@ -49,13 +49,13 @@ def start():
     input("> click enter to move on ")
 
 
-def menu():
+def main_menu_prompt():
     """
     the menu panel in which player can choose to create a new game, load previous game, read th rules or quit the game
     """
     flag = True
     while flag:
-        clear()
+        clear_screen()
         print("1: New Game")
         print("2: Load Previous Game")
         print("3: Rules")
@@ -63,15 +63,15 @@ def menu():
         choice = input("> ")
         
         if choice == "1":
-            clear()
+            clear_screen()
             name = input("> what's your name: ")
             print(f"Welcome, {name}!")
             flag = False
             return True
         
         elif choice == "2":
-            if load():
-                clear()
+            if load_game():
+                clear_screen()
                 print(f"Welcome back, {name}!!")
                 flag = False
                 return True
@@ -79,7 +79,7 @@ def menu():
                 input("> click enter to return to menu...")
 
         elif choice == "3":
-            clear()
+            clear_screen()
             print(rules)
             input("\n> click enter to return to menu...")
             flag = False

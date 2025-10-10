@@ -13,13 +13,13 @@ def before_battle():
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     twilight.display_stats()
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-    if twilight.own_inventory.count > 0:
+    if twilight.inventory.count > 0:
         twilight.display_inventory()
         print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
         choices = input("> would you like to equip a weapon or drink a potion before starting your battle? (yes/no) ")
-        menu.clear()
+        menu.clear_screen()
         while choices == "yes":
-            menu.clear()
+            menu.clear_screen()
             twilight.display_inventory()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
             thing = input("> what would you like to use? or type 'cancel' to exit: ") 
@@ -28,8 +28,8 @@ def before_battle():
                 print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
                 choices = -1
             else:
-                twilight.using_item(int(thing)-1)
-            menu.clear()
+                twilight.use_item(int(thing)-1)
+            menu.clear_screen()
             twilight.display_stats()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
         twilight.display_inventory()
@@ -40,7 +40,7 @@ def battle(enemy):
     Displays and updates stats and health of Twilight before the battle starts and after each attack and 
     Prompts user to attack
     """
-    menu.clear()
+    menu.clear_screen()
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
     twilight.display_stats()
     enemy.display_stats()
@@ -53,16 +53,16 @@ def battle(enemy):
     enemy.health_bar.draw()
     print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
 
-    if twilight.alive() and enemy.alive():
+    if twilight.is_alive() and enemy.alive():
         input("> click enter to attack ")
         return True
     else:
-        if twilight.alive():
-            menu.clear()
+        if twilight.is_alive():
+            menu.clear_screen()
             print("yipee you won!")
         
         else:
-            menu.clear()
+            menu.clear_screen()
             print("oh no you died")
         return False
 
@@ -72,7 +72,7 @@ def continueing(enemy):
     Prompts user to pick up items (potions, elements and weapons) dropped by the enemy after a battle
     If input == 'yes', updates and displays inventory, if input == 'no', continue the game
     """
-    if twilight.alive():
+    if twilight.is_alive():
         current = map.castle.current_location
         if None not in list(map.details[current]["item"]):
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
@@ -106,14 +106,14 @@ def continueing(enemy):
                             game_over()
 
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
-            twilight.putting_back(twilight.weapon)
+            twilight.unequip(twilight.weapon)
             twilight.display_inventory()
             print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
         else:
             print(f"awh man {enemy.name} did not drop anything :(")
 
         input("> click enter to continue! ")
-        menu.clear()
+        menu.clear_screen()
         print("you can continue to move around the map!")
         return True
 
@@ -142,7 +142,7 @@ def at_each_place():
 
 def game_over():
     """checks if all elements have been collected, if all 6 collected, game is won and over"""
-    if twilight.own_inventory.element_count == 6:
+    if twilight.inventory.element_count == 6:
         print("𐙚⋆˚✿˖°~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~𐙚⋆˚✿˖°")
         print(desc.winner)
         quit()

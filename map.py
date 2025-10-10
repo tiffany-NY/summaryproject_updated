@@ -1,6 +1,6 @@
-from character import Character, Higherup, twilight
+from character import Character, Player, twilight
 import data
-from menu import menu
+from menu import main_menu_prompt
 
 
 location_data = data.load_game_data()['locations']
@@ -18,7 +18,7 @@ def create_room(name: str):
 
 
 def unlock():
-    if twilight.own_inventory.element_count >= 5:
+    if twilight.inventory.element_count >= 5:
         return True
     return False
 
@@ -112,7 +112,7 @@ class Map:
             if self.xcoord > 0:
                 self.xcoord -= 1
         elif movement == 5:
-            menu()
+            main_menu_prompt()
         else:
             self.move_location()
             

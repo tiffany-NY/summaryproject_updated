@@ -13,13 +13,13 @@ name = ""
 
 
 while run:
-    menu.start()
-    play = menu.menu()
+    menu.show_intro()
+    play = menu.main_menu_prompt()
 
     while play:
-        menu.save()
+        menu.save_game()
         input("> click enter to move on ")
-        menu.clear()
+        menu.clear_screen()
         at_each_place()
         map.castle.move_location()
         map.castle.show_current_location()
